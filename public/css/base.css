@@ -1,0 +1,17 @@
+#galary .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.aboutStyle {
+  color: "white";
+  background: white;
+  font-family: "Century Gothic";    
+}
+
+
+
+.body{
+    margin: 0px;
+}
