@@ -1,0 +1,19 @@
+.searchStyle{
+    position: fixed;
+    top: 60px;
+    left: 30px;
+    width: 250px;
+    background-color:black;
+    background: rgba(0, 0, 0, 0.7);
+    color:deeppink;
+    z-index: 1;
+    font-family: "milton";
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+@font-face {
+    font-family: milton;
+    src: url("../fonts/milton/Milton Keynes Regular.ttf");
+}

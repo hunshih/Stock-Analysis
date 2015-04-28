@@ -1,0 +1,9 @@
+.radarStyle{
+    position: relative;
+    background-color: white;
+    padding-top: 80px;
+}
+
+.radarStyle canvas{
+    height: 90%;
+}

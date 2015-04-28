@@ -7,6 +7,7 @@
     font-family: "milton";
     font-size: 150%;
     margin: 0px;
+
 }
 @font-face {
     font-family: milton;
@@ -14,17 +15,17 @@
 }
 
 .bannerStyle ul{
-      position: absolute;
-  top: 0px;
-    margin: 0px;
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    display: inline-block;
 }
 
 .bannerStyle ul a{
-
-  display: inline-block;
   padding:5px 20px;
   float: left;
   color: #D8D8D8;
+  text-decoration: none;
 }
 
 .bannerStyle ul a:hover{
@@ -32,3 +33,33 @@
   text-decoration: none;
 }
 
+.bannerStyle ul input{
+    font-family: "milton";
+    font-size: 110%;
+    color: white;
+    height: 30px; 
+    width: 100px; 
+    background-color: transparent;  
+    border-style: solid;  
+    border-width: 0px 0px 1px 0px;  
+    border-color: white; 
+    outline:0;
+    text-transform: uppercase;
+ }
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    text-transform: none;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    text-transform: none;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    text-transform: none;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    text-transform: none;
+}
+
+.bannerStyle ul button{
+        vertical-align: middle;
+ }
