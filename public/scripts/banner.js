@@ -9,6 +9,13 @@ var industryPriceBook;
 var netIncome;
 var dividendPaid;
 var roic;
+var longTermDebt;
+var totalEquity;
+var totalCapital;
+var currentAssets;
+var currentInventories;
+var currentLiabilities;
+var quickRatio;
 //////////////////Banner////////////////
 var Banner = React.createClass({
     render: function(){
@@ -35,7 +42,6 @@ $('a').click(function(){
     $('html, body').animate({
         scrollTop: $(target).offset().top
     }, 2000, "easeInOutQuart");
-    //alert($(this).attr('href'));
     return false;
 });
 
@@ -53,17 +59,27 @@ $("button").click(function(){
             industryPriceBook = response.results[0].pbook;
             React.render(
             <SearchBox />, document.getElementById('searchBox')
-        );
+            );
         }});
     }});
-    $.ajax({url: getRoic(ticker), success: function(response){
-            netIncome = parseFloat(response.results[1].sep272014_value);
-            dividendPaid = convertDividend(response.results[16].sep272014_value);
-            roic = ((netIncome - dividendPaid)*100/totalCapital).toPrecision(4);          
-            React.render(
-            <SearchBox />, document.getElementById('searchBox')
-        );
-    }});
+    $.ajax({url:getQuickRatio(ticker), success: function(response){
+            longTermDebt = parseString(response.results[23].value_3);
+            totalEquity = parseString(response.results[38].value_3);
+            totalCapital = longTermDebt + totalEquity;
+            currentAssets = parseString(response.results[8].value_3);
+            currentInventories = parseString(response.results[6].value_3);
+            currentLiabilities = parseString(response.results[22].value_3);
+            quickRatio = ((currentAssets - currentInventories)/currentLiabilities).toPrecision(3);
+            $.ajax({url: getRoic(ticker), success: function(response){
+                netIncome = parseString(response.results[1].sep272014_value);
+                dividendPaid = convertDividend(response.results[16].sep272014_value);
+                //alert(netIncome);alert(dividendPaid);alert(totalCapital);
+                roic = ((netIncome - dividendPaid)*100/totalCapital).toPrecision(4);          
+                React.render(
+                <SearchBox />, document.getElementById('searchBox')
+                );
+            }});
+    }});    
 });
 
 var getInustryLink = function(symbol){
@@ -74,9 +90,13 @@ var getIndustryAverage = function(industry){
     return "https://api.import.io/store/data/3fd67b00-2b9b-4a23-9b0f-eafa74f90d0f/_query?input/webpage/url=" + industry + "&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7%3A8DLVNS8YsLcDmGnMp3Ne9XK4oWk30YKsoZRG8KWRUyXzPFCqYPlKBGHSE5rm1%2Bd121AIN8eZU6TQZIXwrkqenA%3D%3D";  
 }
 
+var getQuickRatio = function(symbol){
+    return "https://api.import.io/store/data/8fb81fdf-edd5-47db-b30c-26a520ad9af7/_query?input/webpage/url=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fbs%3Fs%3D" + symbol + "&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7%3A8DLVNS8YsLcDmGnMp3Ne9XK4oWk30YKsoZRG8KWRUyXzPFCqYPlKBGHSE5rm1%2Bd121AIN8eZU6TQZIXwrkqenA%3D%3D";    
+}
+
 var getRoic = function(symbol){
     return "https://api.import.io/store/data/c7ce718a-6756-4c73-b885-0d688e996635/_query?input/webpage/url=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fcf%3Fs%3D" + symbol + "%26annual&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7%3A8DLVNS8YsLcDmGnMp3Ne9XK4oWk30YKsoZRG8KWRUyXzPFCqYPlKBGHSE5rm1%2Bd121AIN8eZU6TQZIXwrkqenA%3D%3D";  
-} 
+}
 //////////////////Search Box////////////////
 var SearchBox = React.createClass({
     render: function(){
@@ -88,6 +108,7 @@ var SearchBox = React.createClass({
                 <li>industryEY: {industryEY}</li>
                 <li>industryNetMargin: {industryNetMargin}</li>
                 <li>industryPriceBook: {industryPriceBook}</li>
+                <li>quick ratio: {quickRatio}</li>
                 <li>ROIC: {roic}</li>
             </ul>
         );
@@ -130,14 +151,22 @@ var skillsChart = new Chart(context).Radar(radarData);
 //////////////////Helper Function////////////////
 var convertMarketCap = function(value){
     if(value == null) return 0;
-    var decimalValue = parseFloat(value.substring(0, value.length - 1));
+    var decimalValue = parseString(value.substring(0, value.length - 1));
     if(value.slice(-1) == 'M'){
         return (decimalValue*1.0e+6);
     }
     else return (decimalValue*(1.0e+9));
 };
 var convertDividend = function(value){
-            alert(parseInt(value.substring(1, 10), 10));
     if(value.length <= 1) return 0;
-    else return parseFloat(value.substring(1, value.length - 1));
+    else {
+        var parsedValue = value.substring(1, value.length - 1);
+        return parseString(parsedValue);
+    }
+};
+
+var parseString = function(value){
+    var temp = value;
+    temp = temp.replace(/,/g, "");
+    return parseFloat(temp);
 };
