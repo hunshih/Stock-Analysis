@@ -52,6 +52,9 @@ $('a').click(function(){
     return false;
 });
 
+function startSpin(){
+    spinner.spin(spinTarget);
+};
 
 $("button").click(function(){
     ticker = document.getElementById('ticker').value;
@@ -109,6 +112,7 @@ $("button").click(function(){
     //skillsChart.datasets[0].data = ChartData.slice();
     //alert(skillsChart.datasets[0].data);
     //alert(ChartData.slice());
+    spinner.stop();
     skillsChart.update();
 });
 
