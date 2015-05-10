@@ -3,13 +3,13 @@ var SearchBox = React.createClass({
         return(
             <ul>
                 <li>ticker: {ticker}</li>
-                <li><button id="peButton">PE Score: {presentPE}</button></li>
-                <li><button id="industryPEButton">industryPE: {priceBook}</button></li>
-                <li><button id="eyButton">industryEY: {earningYield}</button></li>
-                <li><button id="marginButton">industryNetMargin: {payoutRatio}</button></li>
-                <li><button id="ratioButton">quick ratio: {quickRatio}</button></li>
-                <li><button id="roicButton">ROIC: {roic}</button></li>
-                <li><button id="capButton">Market Cap: {marketCap}</button></li>
+                <li><button id="peButton">PE Score: {peScore}</button></li>
+                <li><button id="pbButton">PB Score: {pbScore}</button></li>
+                <li><button id="eyButton">EY Score: {eyScore}</button></li>
+                <li><button id="payoutButton">Payout Score: {payoutScore}</button></li>
+                <li><button id="ratioButton">Quick Score: {quickScore}</button></li>
+                <li><button id="roicButton">ROIC Score: {roic}</button></li>
+                <li><button id="capButton">Size Score: {marketCap}</button></li>
             </ul>
         );
     }
@@ -27,7 +27,7 @@ $("#peButton").click(function(){
     $( "#walmart" ).hide();
 });
 
-$("#industryPEButton").click(function(){
+$("#pbButton").click(function(){
     $( "#acetop" ).hide();
     if ($("#walmart").is(":hidden")) {
         $( "#walmart" ).fadeToggle("slow", "linear");

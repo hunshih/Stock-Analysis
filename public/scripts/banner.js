@@ -8,10 +8,14 @@ var industryRoe;
 var industryPriceBook;
 var netIncome;
 var dividendPaid;
+var excessCash;
+var cashEquivalents;
+var longTermInvestment;
 var roic;
 var longTermDebt;
 var totalEquity;
 var totalCapital;
+var totalAssets;
 var currentAssets;
 var currentInventories;
 var currentLiabilities;
@@ -21,8 +25,13 @@ var earningYield;
 var operationMargin;
 var priceBook;
 var payoutRatio;
-var presentPE;
+var peScore;
+var pbScore;
+var eyScore;
+var payoutScore;
+var quickScore;
 var marketCap;
+var sharePrice;
 //////////////////Banner////////////////
 var Banner = React.createClass({
     render: function(){
@@ -44,6 +53,16 @@ React.render(
 <Banner />, document.getElementById('header')
 );
 
+$('#ticker').bind("enterKey",function(e){
+    $( "#searchButton" ).trigger( "click" );
+});
+$('#ticker').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
+    }
+});
+
 $("#searchButton").click(function(){
     ticker = document.getElementById('ticker').value;
     var httpLink = getInustryLink(ticker);
@@ -51,30 +70,38 @@ $("#searchButton").click(function(){
         industryLink = result.results[0].industry;
     }});
     $.ajax({url: getIndustryAverage(industryLink), async:false, success: function(response){
-            industryPE = response.results[0].pe;
-            industryEY = (1/industryPE).toPrecision(3);
-            industryNetMargin = response.results[0].netprofitmargin;
-            industryRoe = response.results[0].roe;
-            industryPriceBook = response.results[0].pbook;
+        industryPE = response.results[0].pe;
+        industryEY = (1/industryPE).toPrecision(3);
+        industryNetMargin = response.results[0].netprofitmargin;
+        industryRoe = response.results[0].roe;
+        industryPriceBook = response.results[0].pbook;
     }});
     $.ajax({url: getMarketCap(ticker), async: false, success: function(response){
-                marketCap = response.query.results.quote.MarketCapitalization;
-                marketCap = convertMarketCap(marketCap);     
+        sharePrice = response.query.results.quote.LastTradePriceOnly;
+        marketCap = response.query.results.quote.MarketCapitalization;
+        marketCap = convertMarketCap(marketCap);     
     }});
     $.ajax({url:getQuickRatio(ticker), async: false, success: function(response){
             longTermDebt = parseString(response.results[23].value_3);
+            longTermInvestment = parseString(response.results[9].value_3);
             totalEquity = parseString(response.results[38].value_3);
-            totalCapital = longTermDebt + totalEquity;
+            totalAssets = parseString(response.results[16].value_3);
             currentAssets = parseString(response.results[8].value_3);
             currentInventories = parseString(response.results[6].value_3);
             currentLiabilities = parseString(response.results[22].value_3);
+            cashEquivalents = parseString(response.results[3].value_3);
+            excessCash = cashEquivalents + longTermInvestment - currentLiabilities;
+            totalCapital = totalAssets - excessCash;
             quickRatio = ((currentAssets - currentInventories)/currentLiabilities).toPrecision(3);
     }});  
     $.ajax({url: getRoic(ticker), async: false, success: function(response){
                 netIncome = parseString(response.results[1].sep272014_value);
                 dividendPaid = convertDividend(response.results[16].sep272014_value);
                 //alert(netIncome);alert(dividendPaid);alert(totalCapital);
-                roic = ((netIncome - dividendPaid)*100/totalCapital).toPrecision(4);          
+                roic = ((netIncome - dividendPaid)*100/totalCapital).toPrecision(4);
+        //alert(totalCapital);
+        //alert(response.results[1].sep272014_value);
+        //alert(dividendPaid);
     }});
     $.ajax({url:getRatios(ticker), async: false, success: function(response){
           peRatio = response.results[0].pe;
@@ -83,20 +110,24 @@ $("#searchButton").click(function(){
           operationMargin = response.results[0].operationmargin;
           priceBook = response.results[0].pbook;
           payoutRatio = response.results[0].payout;
-          presentPE = peScaling(peRatio, industryPE).toPrecision(3);
     }});
-    var ChartData = [presentPE, earningYield, priceBook, roic, 5, payoutRatio, quickRatio];
+    peScore = peScaling(peRatio, industryPE).toPrecision(3);
+    pbScore = pbScaling(priceBook);
+    eyScore = eyScaling(earningYield);
+    payoutScore = payoutScaling(payoutRatio);
+    quickScore = quickScaling(quickRatio);
+    var ChartData = [peScore, earningYield, priceBook, roic, 5, payoutRatio, quickRatio];
     React.render(
         <SearchBox />, document.getElementById('searchBox')
     );
     skillsChart = new Chart(context).Radar(radarData);
-    skillsChart.datasets[0].points[0].value = presentPE;
-    skillsChart.datasets[0].points[1].value = earningYield;
-    skillsChart.datasets[0].points[2].value = priceBook;
+    skillsChart.datasets[0].points[0].value = peScore;
+    skillsChart.datasets[0].points[1].value = eyScore;
+    skillsChart.datasets[0].points[2].value = pbScore;
     skillsChart.datasets[0].points[3].value = roic;
     skillsChart.datasets[0].points[4].value = 5;
-    skillsChart.datasets[0].points[5].value = payoutRatio;
-    skillsChart.datasets[0].points[6].value = quickRatio;
+    skillsChart.datasets[0].points[5].value = payoutScore;
+    skillsChart.datasets[0].points[6].value = quickScore;
     //skillsChart.datasets[0].data = ChartData.slice();
     //alert(skillsChart.datasets[0].data);
     //alert(ChartData.slice());
@@ -130,7 +161,7 @@ var getMarketCap = function(symbol){
 
 //////////////////Radar Graph////////////////
 var radarData = {
-    labels: ["presentPE", "earningYield", "priceBook", "roic", "Market Cap", "payoutRatio", "quickRatio"],
+    labels: ["peScore", "earningYield", "priceBook", "roic", "Market Cap", "payoutRatio", "quickRatio"],
     datasets: [
         {
             label: "My First dataset",
@@ -158,62 +189,3 @@ var radarData = {
 };
 var context = document.getElementById('radarChart').getContext('2d');
 var skillsChart = new Chart(context).Radar(radarData);
-//////////////////Helper Function////////////////
-
-var convertMarketCap = function(value){
-    if(value == null) return 0;
-    var decimalValue = parseString(value.substring(0, value.length - 1));
-    if(value.slice(-1) == 'M'){
-        return (decimalValue*1.0e+6);
-    }
-    else return (decimalValue*(1.0e+9));
-};
-
-var convertDividend = function(value){
-    if(value.length <= 1) return 0;
-    else {
-        var parsedValue = value.substring(1, value.length - 1);
-        return parseString(parsedValue);
-    }
-};
-
-var parseString = function(value){
-    var temp = value;
-    temp = temp.replace(/,/g, "");
-    return parseFloat(temp);
-};
-
-var getPeBase = function(value){
-        if(value <= 15){
-            return 5
-        }
-        else{
-            return (75/value);
-        }
-};
-
-var getPeBonus = function(value, average){
-        if(value < (0.5*average)){
-           return 5;
-        }
-        else if(value <= average ){
-            var slope = (-2/(0.5*average));
-            return (slope * value + 7);
-        }
-        else{
-            return (3 * average)/value;   
-        }
-};
-
-var peScaling = function(value, average){
-    var result = 0;
-    var base = getPeBase(value);
-    var bonus = getPeBonus(value, average);
-    //alert(bonus);
-    result = base + bonus;
-    return result;
-};
-
-var togglePE = function(){ 
-    alert("hi");
-};

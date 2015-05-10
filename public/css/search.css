@@ -21,11 +21,13 @@
 .searchStyle button{
     font-family: "milton";
     border: none;
+    outline-color: darkcyan;
     background-color: Transparent;
     font-weight: bold;
     color:deeppink;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 .searchStyle button:hover {
