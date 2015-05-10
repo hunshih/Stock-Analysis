@@ -17,3 +17,17 @@
     font-family: milton;
     src: url("../fonts/milton/Milton Keynes Regular.ttf");
 }
+
+.searchStyle button{
+    font-family: "milton";
+    border: none;
+    background-color: Transparent;
+    font-weight: bold;
+    color:deeppink;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.searchStyle button:hover {
+  font-size: 1.2em;
+}

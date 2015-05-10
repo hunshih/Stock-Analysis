@@ -1,9 +1,10 @@
-.radarStyle{
+.radarPage{
     position: relative;
-    background-color: white;
     padding-top: 80px;
+    padding-right: 80px;
 }
 
-.radarStyle canvas{
+.radarPage canvas{
+    float: left;
     height: 90%;
 }

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/search.css" />
     <link rel="stylesheet" href="css/radar.css" />
+    <link rel="stylesheet" href="css/description.css" />
     <script src="https://fb.me/react-0.13.1.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.1.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
@@ -17,9 +18,12 @@
       
     <div id="header" class="bannerStyle"></div>
     <div id="searchBox" class="searchStyle"></div>
-    <div id="radar" class="radarStyle">
+    <div id="radar" class="radarPage">
       <canvas id="radarChart" data="ChartData" labels="corners"></canvas>
     </div>
-    <script type="text/jsx" src="scripts/banner.js"></script>      
+    <div id="description" class="descriptionStyle"></div>
+    <script type="text/jsx" src="scripts/banner.js"></script>
+    <script type="text/jsx" src="scripts/statsbox.js"></script>
+    <script type="text/jsx" src="scripts/description.js"></script> 
   </body>
 </html>
