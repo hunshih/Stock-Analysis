@@ -2,8 +2,13 @@
     position: relative;
     background-color: white;
     padding-top: 80px;
+    float: left;
 }
 
 .radarStyle canvas{
     height: 90%;
+}
+
+.testStyle {
+    float: left;
 }
