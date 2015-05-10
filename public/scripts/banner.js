@@ -33,7 +33,7 @@ var Banner = React.createClass({
                 <a href="#ownership">Report Card</a>
                 <a href="#credits">Credits</a>
                 <input type="text" placeholder="Ticker" id="ticker"></input>
-                <button type="button">Search</button>
+                <button id="searchButton">Search</button>
             </ul>
         );
     }
@@ -44,19 +44,7 @@ React.render(
 <Banner />, document.getElementById('header')
 );
 
-$('a').click(function(){
-    var target = $(this).attr('href');
-    $('html, body').animate({
-        scrollTop: $(target).offset().top
-    }, 2000, "easeInOutQuart");
-    return false;
-});
-
-function startSpin(){
-    spinner.spin(spinTarget);
-};
-
-$("button").click(function(){
+$("#searchButton").click(function(){
     ticker = document.getElementById('ticker').value;
     var httpLink = getInustryLink(ticker);
     $.ajax({url: getInustryLink(ticker), async:false, success: function(result){
@@ -139,28 +127,6 @@ var getRatios = function(symbol){
 var getMarketCap = function(symbol){
     return "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + symbol + "%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
 }
-//////////////////Search Box////////////////
-var SearchBox = React.createClass({
-    render: function(){
-        return(
-            <ul>
-                <li>ticker: {ticker}</li>
-                <li>PE Score: {presentPE}</li>
-                <li>industryPE: {earningYield}</li>
-                <li>industryEY: {priceBook}</li>
-                <li>industryNetMargin: {payoutRatio}</li>
-                <li>quick ratio: {quickRatio}</li>
-                <li>ROIC: {roic}</li>
-                <li>Market Cap: {marketCap}</li>
-            </ul>
-        );
-    }
-});
-
-
-React.render(
-<SearchBox />, document.getElementById('searchBox')
-);
 
 //////////////////Radar Graph////////////////
 var radarData = {
@@ -246,4 +212,8 @@ var peScaling = function(value, average){
     //alert(bonus);
     result = base + bonus;
     return result;
+};
+
+var togglePE = function(){ 
+    alert("hi");
 };

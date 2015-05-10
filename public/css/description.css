@@ -1,0 +1,18 @@
+.descriptionStyle{
+    position: fixed;
+    top: 60px;
+    right: 50px;
+    width: 400px;
+    height: 600px;
+    color:darkgreen;
+    z-index: 1;
+    font-family: "milton";
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+@font-face {
+    font-family: milton;
+    src: url("../fonts/milton/Milton Keynes Regular.ttf");
+}
