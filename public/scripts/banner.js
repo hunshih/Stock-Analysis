@@ -100,6 +100,7 @@ $("#searchButton").click(function(){
     //skillsChart.datasets[0].data = ChartData.slice();
     //alert(skillsChart.datasets[0].data);
     //alert(ChartData.slice());
+    spinner.stop();
     skillsChart.update();
 });
 
