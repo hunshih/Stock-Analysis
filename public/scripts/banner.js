@@ -12,6 +12,7 @@ var excessCash;
 var cashEquivalents;
 var longTermInvestment;
 var roic;
+var roicScore;
 var longTermDebt;
 var totalEquity;
 var totalCapital;
@@ -28,6 +29,7 @@ var payoutRatio;
 var peScore;
 var pbScore;
 var eyScore;
+var marketCapScore;
 var payoutScore;
 var quickScore;
 var marketCap;
@@ -116,6 +118,8 @@ $("#searchButton").click(function(){
     eyScore = eyScaling(earningYield);
     payoutScore = payoutScaling(payoutRatio);
     quickScore = quickScaling(quickRatio);
+    roicScore = roicScaling(roic);
+    marketCapScore = capScaling(marketCap);
     var ChartData = [peScore, earningYield, priceBook, roic, 5, payoutRatio, quickRatio];
     React.render(
         <SearchBox />, document.getElementById('searchBox')
@@ -124,14 +128,13 @@ $("#searchButton").click(function(){
     skillsChart.datasets[0].points[0].value = peScore;
     skillsChart.datasets[0].points[1].value = eyScore;
     skillsChart.datasets[0].points[2].value = pbScore;
-    skillsChart.datasets[0].points[3].value = roic;
-    skillsChart.datasets[0].points[4].value = 5;
+    skillsChart.datasets[0].points[3].value = roicScore;
+    skillsChart.datasets[0].points[4].value = marketCapScore;
     skillsChart.datasets[0].points[5].value = payoutScore;
     skillsChart.datasets[0].points[6].value = quickScore;
     //skillsChart.datasets[0].data = ChartData.slice();
     //alert(skillsChart.datasets[0].data);
     //alert(ChartData.slice());
-    spinner.stop();
     skillsChart.update();
 });
 

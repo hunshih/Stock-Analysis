@@ -16,3 +16,8 @@
     font-family: milton;
     src: url("../fonts/milton/Milton Keynes Regular.ttf");
 }
+
+.descriptionStyle p{
+    font-size: 500%;
+    text-align: center;
+}

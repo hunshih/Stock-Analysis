@@ -138,3 +138,46 @@ var quickScaling = function(value){
     }
     return result;
 }
+
+var roicScaling = function(value){
+    var result = 0;
+    if(value < 5){
+        result = 3;
+    }
+    else if(value < 10){
+        result = 4;
+    }
+    else if(value < 15){
+        result = 5;
+    }
+    else if(value < 20){
+        result = 6;
+    }
+    else if(value < 25){
+        result = 7;
+    }
+    else if(value < 30){
+        result = 8;
+    }
+    else{
+        result = 9;
+    }
+    return result;
+}
+
+var capScaling = function(value){
+    var result = 0;
+    if(value < 1217*1.0e+6){
+        result = 5;
+    }
+    else if(value < 3789*1.0e+6){
+        result = 6;
+    }
+    else if(value < 16621*1.0e+6){
+        result = 7;
+    }
+    else{
+        result = 8;
+    }
+    return result;
+}
