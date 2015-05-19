@@ -308,7 +308,7 @@
 			return !isNaN(parseFloat(n)) && isFinite(n);
 		},
 		max = helpers.max = function(array){
-			return Math.max.apply( Math, array );
+			return 10;
 		},
 		min = helpers.min = function(array){
 			return Math.min.apply( Math, array );
@@ -383,8 +383,8 @@
 		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
 
 			//Set a minimum step of two - a point at the top of the graph, and a point at the base
-			var minSteps = 2,
-				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
+			var minSteps = 10,
+				maxSteps = 10,
 				skipFitting = (minSteps >= maxSteps);
 
 			var maxValue = max(valuesArray),

@@ -13,16 +13,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
     <script src="scripts/easing.js"></script>
     <script src="bower_components/chartjs/Chart.js"></script>
-    <script src="scripts/spin.js"></script>
   </head>
-  <body class="body">
-      
+  <body class="body">  
     <div id="header" class="bannerStyle"></div>
-    <div id="searchBox" class="searchStyle"></div>
-    <div id="radar" class="radarPage">
-      <canvas id="radarChart" data="ChartData" labels="corners"></canvas>
+    <div id="allViews">
+        <div id="ratioView">
+            <div id="searchBox" class="searchStyle"></div>
+            <div id="radar" class="radarPage">
+              <canvas id="radarChart" data="ChartData" labels="corners"></canvas>
+            </div>
+            <div id="description" class="descriptionStyle"></div>
+        </div>
+        <div id="cashView">
+          <img src="image/home.jpg"></img>
+        </div>
+        <div id="reportView">
+          <img src="image/walmart.jpg"></img>
+        </div>
+        <div id="creditView">
+          <img src="image/spencers.jpg"></img>
+        </div>
     </div>
-    <div id="description" class="descriptionStyle"></div>
     <script type="text/jsx" src="scripts/banner.js"></script>
     <script type="text/jsx" src="scripts/statsbox.js"></script>
     <script type="text/jsx" src="scripts/description.js"></script>

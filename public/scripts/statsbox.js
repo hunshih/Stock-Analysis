@@ -22,42 +22,42 @@ React.render(
 
 var buttonIDs = ["#peLetter","#pbLetter", "#eyLetter", "#payoutLetter", "#quickLetter", "#roicLetter", "#capLetter"];
 
-function showSection(sectionID){
+function showSection(sectionID, inputArray){
     if ($(sectionID).is(":hidden")) {
         $( sectionID ).fadeToggle("slow", "linear");
     }
-    for(var i in buttonIDs){
-        if(buttonIDs[i] !== sectionID){
-            $(buttonIDs[i]).hide(); 
+    for(var i in inputArray){
+        if(inputArray[i] !== sectionID){
+            $(inputArray[i]).hide(); 
         }
     }
 };
 
 $("#peButton").click(function(){
-    showSection("#peLetter");
+    showSection("#peLetter", buttonIDs);
 });
 
 $("#pbButton").click(function(){
-    showSection("#pbLetter");
+    showSection("#pbLetter", buttonIDs);
 });
 
 $("#eyButton").click(function(){
-    showSection("#eyLetter");
+    showSection("#eyLetter", buttonIDs);
 });
 
 $("#payoutButton").click(function(){
-    showSection("#payoutLetter");
+    showSection("#payoutLetter", buttonIDs);
 });
 
 $("#quickButton").click(function(){
-    showSection("#quickLetter");
+    showSection("#quickLetter", buttonIDs);
 });
 
 $("#roicButton").click(function(){
-    showSection("#roicLetter");
+    showSection("#roicLetter", buttonIDs);
 });
 
 $("#capButton").click(function(){
-    showSection("#capLetter");
+    showSection("#capLetter", buttonIDs);
 });
 

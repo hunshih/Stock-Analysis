@@ -41,7 +41,7 @@ var Banner = React.createClass({
             <ul>
                 <a href="#ratio">Ratio</a>
                 <a href="#cash">Cash Flow</a>
-                <a href="#ownership">Report Card</a>
+                <a href="#report">Report Card</a>
                 <a href="#credits">Credits</a>
                 <input type="text" placeholder="Ticker" id="ticker"></input>
                 <button id="searchButton">Search</button>
@@ -54,6 +54,24 @@ var Banner = React.createClass({
 React.render(
 <Banner />, document.getElementById('header')
 );
+///////////////////Initial Views///////////////////////////
+var viewIDs = ["#ratioView", "#cashView","#reportView", "#creditView"];
+$("#cashView").hide();
+$("#reportView").hide();
+$("#creditView").hide();
+$('a[href="#ratio"]').click(function(){
+  showSection("#ratioView", viewIDs);
+}); 
+$('a[href="#cash"]').click(function(){
+  showSection("#cashView", viewIDs);
+}); 
+$('a[href="#report"]').click(function(){
+  showSection("#reportView", viewIDs);
+}); 
+$('a[href="#credits"]').click(function(){
+  showSection("#creditView", viewIDs);
+}); 
+//////////////////////////////
 
 $('#ticker').bind("enterKey",function(e){
     $( "#searchButton" ).trigger( "click" );
