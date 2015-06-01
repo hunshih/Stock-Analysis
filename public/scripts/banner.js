@@ -61,6 +61,8 @@ $("#reportView").hide();
 $("#creditView").hide();
 $('a[href="#ratio"]').click(function(){
   showSection("#ratioView", viewIDs);
+    //context = document.getElementById('radarChart').getContext('2d');
+    //skillsChart = new Chart(context).Radar(radarData);
 }); 
 $('a[href="#cash"]').click(function(){
   showSection("#cashView", viewIDs);
@@ -142,7 +144,7 @@ $("#searchButton").click(function(){
     React.render(
         <SearchBox />, document.getElementById('searchBox')
     );
-    skillsChart = new Chart(context).Radar(radarData);
+    //skillsChart = new Chart(context).Radar(radarData);
     skillsChart.datasets[0].points[0].value = peScore;
     skillsChart.datasets[0].points[1].value = eyScore;
     skillsChart.datasets[0].points[2].value = pbScore;

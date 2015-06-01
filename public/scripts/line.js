@@ -18,4 +18,8 @@ google.setOnLoadCallback(drawChart);
         var chart = new google.visualization.LineChart(document.getElementById('lineChart'));
 
         chart.draw(data, options);
-      }
+};
+
+function updateLineChart(){
+    alert("line chart updated");
+}
