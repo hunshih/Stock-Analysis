@@ -9,6 +9,7 @@ var PESection = React.createClass({
                 <p id="quickLetter">A</p>
                 <p id="roicLetter">B+</p>
                 <p id="capLetter">B</p>
+            <img src="../image/walmart.jpg"></img>
             </div>
         )
     }

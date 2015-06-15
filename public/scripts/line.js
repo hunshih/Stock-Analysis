@@ -23,3 +23,6 @@ google.setOnLoadCallback(drawChart);
 function updateLineChart(){
     alert("line chart updated");
 }
+
+$("#lineChart").click(function() {
+});

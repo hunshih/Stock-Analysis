@@ -2,3 +2,27 @@
     position: relative;
     padding-top: 50px;
 }
+
+.cashGraphs{
+    width:50%;
+    float:left;
+}
+
+.cashGraphs div{
+    transition: all .5s ease-in-out;
+    padding: 5px;
+}
+.cashGraphs div:hover{
+    transform: scale(1.03);
+}
+
+.cashDesc{
+    height: 100%;
+    width:50%;
+    float:right;
+}
+
+.cashDesc p{
+    font-size: 500%;
+    text-align: center;
+}
