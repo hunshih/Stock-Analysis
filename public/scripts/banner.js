@@ -86,6 +86,7 @@ $('#ticker').keyup(function(e){
 });
 
 $("#searchButton").click(function(){
+    $(this).attr('disabled', true);
     ticker = document.getElementById('ticker').value;
     var httpLink = getInustryLink(ticker);
     $.ajax({url: getInustryLink(ticker), async:false, success: function(result){
@@ -156,6 +157,8 @@ $("#searchButton").click(function(){
     //alert(skillsChart.datasets[0].data);
     //alert(ChartData.slice());
     skillsChart.update();
+    updateLineChart();
+    $(this).attr('disabled', false);
 });
 
 var getInustryLink = function(symbol){
