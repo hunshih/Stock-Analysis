@@ -34,6 +34,9 @@ var payoutScore;
 var quickScore;
 var marketCap;
 var sharePrice;
+var annualCashOps;
+var annualCapEx;
+var annualFreeCash = [];
 //////////////////Banner////////////////
 var Banner = React.createClass({
     render: function(){
@@ -56,22 +59,19 @@ React.render(
 );
 ///////////////////Initial Views///////////////////////////
 var viewIDs = ["#ratioView", "#cashView","#reportView", "#creditView"];
-$("#cashView").hide();
-$("#reportView").hide();
-$("#creditView").hide();
 $('a[href="#ratio"]').click(function(){
-  showSection("#ratioView", viewIDs);
+  //showSection("#ratioView", viewIDs);
     //context = document.getElementById('radarChart').getContext('2d');
     //skillsChart = new Chart(context).Radar(radarData);
 }); 
 $('a[href="#cash"]').click(function(){
-  showSection("#cashView", viewIDs);
+  //showSection("#cashView", viewIDs);
 }); 
 $('a[href="#report"]').click(function(){
-  showSection("#reportView", viewIDs);
+  //showSection("#reportView", viewIDs);
 }); 
 $('a[href="#credits"]').click(function(){
-  showSection("#creditView", viewIDs);
+  //showSection("#creditView", viewIDs);
 }); 
 //////////////////////////////
 
@@ -120,11 +120,14 @@ $("#searchButton").click(function(){
     $.ajax({url: getRoic(ticker), async: false, success: function(response){
                 netIncome = parseString(response.results[1].sep272014_value);
                 dividendPaid = convertDividend(response.results[16].sep272014_value);
-                //alert(netIncome);alert(dividendPaid);alert(totalCapital);
                 roic = ((netIncome - dividendPaid)*100/totalCapital).toPrecision(4);
-        //alert(totalCapital);
-        //alert(response.results[1].sep272014_value);
-        //alert(dividendPaid);
+                annualCashOps = jsonToAry(response.results[9]);
+                annualCapEx = jsonToAry(response.results[11]);
+                for(var index = 0; index < annualCashOps.length; index++){
+                    annualFreeCash[index] = annualCashOps[index] + annualCapEx[index]; //capex is negative
+                    //alert(annualFreeCash[index]);
+                    //alert(annualCapEx[index]);
+                }
     }});
     $.ajax({url:getRatios(ticker), async: false, success: function(response){
           peRatio = response.results[0].pe;
@@ -158,6 +161,7 @@ $("#searchButton").click(function(){
     //alert(ChartData.slice());
     skillsChart.update();
     updateLineChart();
+    updateComboChart();
     $(this).attr('disabled', false);
 });
 

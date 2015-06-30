@@ -1,25 +1,43 @@
+var comboData;
+var comboOption;
+var CashComboChart;
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawVisualization);
 
 function drawVisualization() {
   // Some raw data (not necessarily accurate)
-  var data = google.visualization.arrayToDataTable([
-    ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-    ['2004/05',  165,      938,         522,             998,           450,      614.6],
-    ['2005/06',  135,      1120,        599,             1268,          288,      682],
-    ['2006/07',  157,      1167,        587,             807,           397,      623],
-    ['2007/08',  139,      1110,        615,             968,           215,      609.4],
-    ['2008/09',  136,      691,         629,             1026,          366,      569.6]
+  comboData = google.visualization.arrayToDataTable([
+    ['Year', 'Cash From Operation', 'Capital Expenditures', 'Free Cash'],
+    ['2012',  0,      0,      0],
+    ['2013',  0,      0,      0],
+    ['2014',  0,      0,      0]
   ]);
 
-  var options = {
-    title : 'Monthly Coffee Production by Country',
-    vAxis: {title: "Cups"},
-    hAxis: {title: "Month"},
+  comboOption = {
+    title : 'Free Cash Flow',
+    vAxis: {title: "$"},
+    hAxis: {title: "Year"},
     seriesType: "bars",
-    series: {5: {type: "line"}}
+    series: {2: {type: "line"}},
+    animation:{
+        duration: 1000,
+        easing: 'out',
+    }
   };
 
-  var chart = new google.visualization.ComboChart(document.getElementById('comboChart'));
-  chart.draw(data, options);
+  CashComboChart = new google.visualization.ComboChart(document.getElementById('comboChart'));
+  CashComboChart.draw(comboData, comboOption);
+}
+
+function updateComboChart(){
+    comboData.setValue(0,1,annualCashOps[2]);
+    comboData.setValue(0,2,-annualCapEx[2]);
+    comboData.setValue(0,3,annualFreeCash[2]);
+    comboData.setValue(1,1,annualCashOps[1]);
+    comboData.setValue(1,2,-annualCapEx[1]);
+    comboData.setValue(1,3,annualFreeCash[1]);
+    comboData.setValue(2,1,annualCashOps[0]);
+    comboData.setValue(2,2,-annualCapEx[0]);
+    comboData.setValue(2,3,annualFreeCash[0]);
+    CashComboChart.draw(comboData, comboOption);
 }

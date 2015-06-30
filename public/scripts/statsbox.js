@@ -2,7 +2,7 @@ var SearchBox = React.createClass({
     render: function(){
         return(
             <ul>
-                <li>ticker: {ticker}</li>
+                <p>{ticker}</p>
                 <li><button id="peButton">PE Score: {peScore}</button></li>
                 <li><button id="pbButton">PB Score: {pbScore}</button></li>
                 <li><button id="eyButton">EY Score: {eyScore}</button></li>

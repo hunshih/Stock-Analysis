@@ -181,3 +181,7 @@ var capScaling = function(value){
     }
     return result;
 }
+
+var jsonToAry = function(jsonObj){
+    return [parseString(jsonObj.sep272014_value), parseString(jsonObj.sep282013_value), parseString(jsonObj.sep292012_value)];    
+}
