@@ -42,10 +42,10 @@ var Banner = React.createClass({
     render: function(){
         return(
             <ul>
-                <a href="#ratio">Ratio</a>
-                <a href="#cash">Cash Flow</a>
-                <a href="#report">Report Card</a>
-                <a href="#credits">Credits</a>
+                <a href="#ratioView">Ratio</a>
+                <a href="#cashView">Cash Flow</a>
+                <a href="#reportView">Report Card</a>
+                <a href="#creditView">Credits</a>
                 <input type="text" placeholder="Ticker" id="ticker"></input>
                 <button id="searchButton">Search</button>
             </ul>
@@ -219,3 +219,13 @@ var radarData = {
 };
 var context = document.getElementById('radarChart').getContext('2d');
 var skillsChart = new Chart(context).Radar(radarData);
+
+/////////////////Easing/////////////////
+$('a').click(function(){
+    var target = $(this).attr('href');
+    $('html, body').animate({
+        scrollTop: $(target).offset().top
+    }, 2000, "easeInOutQuart");
+    //alert($(this).attr('href'));
+    return false;
+});

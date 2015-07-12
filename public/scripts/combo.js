@@ -15,7 +15,7 @@ function drawVisualization() {
 
   comboOption = {
     title : 'Free Cash Flow',
-    vAxis: {title: "$"},
+    vAxis: {title: "Thousand"},
     hAxis: {title: "Year"},
     seriesType: "bars",
     series: {2: {type: "line"}},
@@ -30,14 +30,14 @@ function drawVisualization() {
 }
 
 function updateComboChart(){
-    comboData.setValue(0,1,annualCashOps[2]);
-    comboData.setValue(0,2,-annualCapEx[2]);
-    comboData.setValue(0,3,annualFreeCash[2]);
-    comboData.setValue(1,1,annualCashOps[1]);
-    comboData.setValue(1,2,-annualCapEx[1]);
-    comboData.setValue(1,3,annualFreeCash[1]);
-    comboData.setValue(2,1,annualCashOps[0]);
-    comboData.setValue(2,2,-annualCapEx[0]);
-    comboData.setValue(2,3,annualFreeCash[0]);
+    comboData.setValue(0,1,annualCashOps[2]/1000);
+    comboData.setValue(0,2,-annualCapEx[2]/1000);
+    comboData.setValue(0,3,annualFreeCash[2]/1000);
+    comboData.setValue(1,1,annualCashOps[1]/1000);
+    comboData.setValue(1,2,-annualCapEx[1]/1000);
+    comboData.setValue(1,3,annualFreeCash[1]/1000);
+    comboData.setValue(2,1,annualCashOps[0]/1000);
+    comboData.setValue(2,2,-annualCapEx[0]/1000);
+    comboData.setValue(2,3,annualFreeCash[0]/1000);
     CashComboChart.draw(comboData, comboOption);
 }

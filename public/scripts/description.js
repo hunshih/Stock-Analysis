@@ -2,7 +2,7 @@ var PESection = React.createClass({
     render: function(){
         return(
             <div>
-                <p id="peLetter">A+</p>
+                <p id="peLetter">{peScore}</p>
                 <p id="pbLetter">B</p>
                 <p id="eyLetter">B+</p>
                 <p id="payoutLetter">A-</p>
@@ -19,7 +19,7 @@ React.render(
     <PESection id="testID"/>, document.getElementById('description')                        
 );
 
-$("#peLetter").hide();
+//$("#peLetter").hide();
 $("#pbLetter").hide();
 $("#eyLetter").hide();
 $("#payoutLetter").hide();
