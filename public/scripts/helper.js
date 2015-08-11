@@ -185,3 +185,12 @@ var capScaling = function(value){
 var jsonToAry = function(jsonObj){
     return [parseString(jsonObj.sep272014_value), parseString(jsonObj.sep282013_value), parseString(jsonObj.sep292012_value)];    
 }
+
+//Search box fade animation
+$(window).scroll(function() {
+    if ($(this).scrollTop() < 400) {
+        $("#searchBox").fadeIn(700);
+    } else {
+        $("#searchBox").fadeOut(650);
+    }
+});

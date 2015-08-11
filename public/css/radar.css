@@ -1,14 +1,12 @@
 .radarPage{
     position: relative;
-    padding-top: 80px;
+    padding-top: 40px;
     padding-right: 80px;
+    height: 700px;
 }
 
 .radarPage canvas{
-    float: left;
-    height: 90%;
-}
-
-.testStyle {
-    float: left;
+    display: block;
+    margin: auto;
+    height: 650px;
 }
