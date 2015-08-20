@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/radar.css" />
     <link rel="stylesheet" href="css/cashPage.css" />  
     <link rel="stylesheet" href="css/description.css" />
+    <link rel="stylesheet" href="css/report.css" />
     <script src="https://fb.me/react-0.13.1.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.1.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
@@ -20,10 +21,11 @@
     <div id="allViews">
         <div id="ratioView">
             <div id="searchBox" class="searchStyle"></div>
+            <div id="description" class="descriptionStyle"></div>
+            <div id="display" class="descriptionStyle"></div>
             <div id="radar" class="radarPage">
               <canvas id="radarChart" data="ChartData" labels="corners"></canvas>
             </div>
-            <div id="description" class="descriptionStyle"></div>
         </div>
         <div id="cashView" class="cashPage">
             <div class="cashGraphs">
@@ -33,21 +35,13 @@
             </div>
             <div id="cashDescription" class="cashDesc"></div>
         </div>
-        <div id="reportView">
-          <img src="image/walmart.jpg"></img>
+        <div id="reportView" class="reportStyle">
+            <div id="table_div"></div>
         </div>
         <div id="creditView">
-          <img src="image/spencers.jpg"></img>
         </div>
     </div>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi?autoload={
-            'modules':[{
-              'name':'visualization',
-              'version':'1',
-              'packages':['corechart']
-            }]
-          }"></script>
     <script type="text/jsx" src="scripts/banner.js"></script>
     <script type="text/jsx" src="scripts/statsbox.js"></script>
     <script type="text/jsx" src="scripts/description.js"></script>
@@ -56,5 +50,6 @@
     <script type="text/javascript" src="scripts/line.js"></script>
     <script type="text/javascript" src="scripts/combo.js"></script>
     <script type="text/javascript" src="scripts/diff.js"></script>
+    <script type="text/javascript" src="scripts/table.js"></script>
   </body>
 </html>

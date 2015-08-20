@@ -1,6 +1,7 @@
 .cashPage{
+    padding-top: 40px;
     position: relative;
-    height:900;
+    height:750px;
 }
 
 .cashGraphs{

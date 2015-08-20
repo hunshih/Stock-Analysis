@@ -2,7 +2,6 @@ var SearchBox = React.createClass({
     render: function(){
         return(
             <ul>
-                <p>{ticker}</p>
                 <li><button id="peButton">PE Score: {peScore}</button></li>
                 <li><button id="pbButton">PB Score: {pbScore}</button></li>
                 <li><button id="eyButton">EY Score: {eyScore}</button></li>
@@ -34,6 +33,7 @@ function showSection(sectionID, inputArray){
 };
 
 $("#peButton").click(function(){
+    alert(sharePrice);
     showSection("#peLetter", buttonIDs);
 });
 

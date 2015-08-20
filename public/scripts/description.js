@@ -2,13 +2,13 @@ var PESection = React.createClass({
     render: function(){
         return(
             <div>
-                <p id="peLetter">{peScore}</p>
-                <p id="pbLetter">B</p>
-                <p id="eyLetter">B+</p>
-                <p id="payoutLetter">A-</p>
-                <p id="quickLetter">A</p>
-                <p id="roicLetter">B+</p>
-                <p id="capLetter">B</p>
+                <h2 id="peLetter">{roic}</h2>
+                <h2 id="pbLetter">B</h2>
+                <h2 id="eyLetter">B+</h2>
+                <h2 id="payoutLetter">A-</h2>
+                <h2 id="quickLetter">A</h2>
+                <h2 id="roicLetter">B+</h2>
+                <h2 id="capLetter">B</h2>
             </div>
         )
     }
@@ -16,10 +16,10 @@ var PESection = React.createClass({
 });
 
 React.render(
-    <PESection id="testID"/>, document.getElementById('description')                        
+    <PESection />, document.getElementById('description')                        
 );
 
-//$("#peLetter").hide();
+$("#peLetter").hide();
 $("#pbLetter").hide();
 $("#eyLetter").hide();
 $("#payoutLetter").hide();
