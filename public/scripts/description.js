@@ -2,13 +2,13 @@ var PESection = React.createClass({
     render: function(){
         return(
             <div>
-                <h2 id="peLetter">{roic}</h2>
-                <h2 id="pbLetter">B</h2>
-                <h2 id="eyLetter">B+</h2>
-                <h2 id="payoutLetter">A-</h2>
-                <h2 id="quickLetter">A</h2>
-                <h2 id="roicLetter">B+</h2>
-                <h2 id="capLetter">B</h2>
+                <h2 id="peLetter">{peRatio}</h2>
+                <h2 id="pbLetter">{priceBook}</h2>
+                <h2 id="eyLetter">{earningYield}</h2>
+                <h2 id="payoutLetter">{payoutRatio}</h2>
+                <h2 id="quickLetter">{quickRatio}</h2>
+                <h2 id="roicLetter">{roic}</h2>
+                <h2 id="capLetter">{marketCap}</h2>
             </div>
         )
     }
