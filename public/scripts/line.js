@@ -20,7 +20,8 @@ google.setOnLoadCallback(drawChart);
             duration: 1000,
             easing: 'out',
           },
-          vAxis: {minValue:0, maxValue:10}
+          vAxis: {minValue:0, maxValue:10},
+            backgroundColor: { fill:'transparent' }
         };
 
         CashLineChart = new google.visualization.LineChart(document.getElementById('lineChart'));

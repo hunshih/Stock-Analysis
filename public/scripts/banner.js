@@ -13,7 +13,8 @@ var cashEquivalents;
 var longTermInvestment;
 var roic;
 var roicScore;
-var longTermDebt;
+var longTermDebt = [];
+var shortTermDebt = [];
 var totalEquity;
 var totalCapital;
 var totalAssets;
@@ -104,8 +105,7 @@ $("#searchButton").click(function(){
         marketCap = response.query.results.quote.MarketCapitalization;
         marketCap = convertMarketCap(marketCap);     
     }});
-    $.ajax({url:getQuickRatio(ticker), async: false, success: function(response){
-            longTermDebt = parseString(response.results[23].value_3);
+    $.ajax({url:getQtrData(ticker), async: false, success: function(response){
             longTermInvestment = parseString(response.results[9].value_3);
             totalEquity = parseString(response.results[38].value_3);
             totalAssets = parseString(response.results[16].value_3);
@@ -117,12 +117,19 @@ $("#searchButton").click(function(){
             totalCapital = totalAssets - excessCash;
             quickRatio = ((currentAssets - currentInventories)/currentLiabilities).toPrecision(3);
     }});  
+    $.ajax({url:getAnlData(ticker), async: false, success: function(response){
+            longTermDebt = jsonToAry(response.results[23], false);
+            shortTermDebt = jsonToAry(response.results[20], false);
+            for( var indexting = 0; indexting < 3; indexting++){
+                alert("Long:" + longTermDebt[indexting] + "| short: " + shortTermDebt[indexting]);
+            };
+    }});
     $.ajax({url: getRoic(ticker), async: false, success: function(response){
                 netIncome = parseString(response.results[1].sep272014_value);
                 dividendPaid = convertDividend(response.results[16].sep272014_value);
                 roic = ((netIncome - dividendPaid)*100/totalCapital).toPrecision(4);
-                annualCashOps = jsonToAry(response.results[9]);
-                annualCapEx = jsonToAry(response.results[11]);
+                annualCashOps = jsonToAry(response.results[9], true);
+                annualCapEx = jsonToAry(response.results[11], true);
                 for(var index = 0; index < annualCashOps.length; index++){
                     annualFreeCash[index] = annualCashOps[index] + annualCapEx[index]; //capex is negative
                     //alert(annualFreeCash[index]);
@@ -173,8 +180,12 @@ var getIndustryAverage = function(industry){
     return "https://api.import.io/store/data/3fd67b00-2b9b-4a23-9b0f-eafa74f90d0f/_query?input/webpage/url=" + industry + "&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7%3A8DLVNS8YsLcDmGnMp3Ne9XK4oWk30YKsoZRG8KWRUyXzPFCqYPlKBGHSE5rm1%2Bd121AIN8eZU6TQZIXwrkqenA%3D%3D";  
 }
 
-var getQuickRatio = function(symbol){
-    return "https://api.import.io/store/data/8fb81fdf-edd5-47db-b30c-26a520ad9af7/_query?input/webpage/url=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fbs%3Fs%3D" + symbol + "&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7%3A8DLVNS8YsLcDmGnMp3Ne9XK4oWk30YKsoZRG8KWRUyXzPFCqYPlKBGHSE5rm1%2Bd121AIN8eZU6TQZIXwrkqenA%3D%3D";    
+var getQtrData = function(symbol){
+    return "https://api.import.io/store/data/8fb81fdf-edd5-47db-b30c-26a520ad9af7/_query?input/webpage/url=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fbs%3Fs%3D" + symbol + "&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd390723ed45f586f569e5b8a4c9e7f032d5352f18b0b7039869cca7735ef572b8a16937d182aca19446f0a5915325f33c50aa60f94a0461d2139ae6d7e775db500837c79953a4d06485f0ae4a9e9c";    
+}
+
+var getAnlData = function(symbol){
+    return "https://api.import.io/store/data/e8ff2eb8-53b3-474c-9811-a45d271bfc53/_query?input/webpage/url=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fbs%3Fs%3D" + symbol + "%2BBalance%2BSheet%26annual&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd390723ed45f586f569e5b8a4c9e7f032d5352f18b0b7039869cca7735ef572b8a16937d182aca19446f0a5915325f33c50aa60f94a0461d2139ae6d7e775db500837c79953a4d06485f0ae4a9e9c";    
 }
 
 var getRoic = function(symbol){

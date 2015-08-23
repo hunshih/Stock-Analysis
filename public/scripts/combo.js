@@ -22,7 +22,8 @@ function drawVisualization() {
     animation:{
         duration: 1000,
         easing: 'out',
-    }
+    },
+    backgroundColor: { fill:'transparent' }
   };
 
   CashComboChart = new google.visualization.ComboChart(document.getElementById('comboChart'));

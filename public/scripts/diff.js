@@ -18,7 +18,9 @@
     ]);
     var colChartDiff = new google.visualization.ColumnChart(document.getElementById('colchart_diff'));
 
-    var options = { legend: { position: 'top' } };
+    var options = { legend: { position: 'top' },
+                   backgroundColor: { fill:'transparent' }
+                  };
 
 
     var diffData = colChartDiff.computeDiff(oldData, newData);

@@ -23,6 +23,7 @@ var parseString = function(value){
         isPositive = false;
     }
     temp = temp.replace(/,/g, "");
+    temp = temp.replace(/-/g, "0");
     if(isPositive){
         temp = parseFloat(temp);
     }
@@ -188,9 +189,11 @@ var jsonToAry = function(jsonObj){
 
 //Search box fade animation
 $(window).scroll(function() {
-    if ($(this).scrollTop() < 400) {
-        $("#searchBox").fadeIn(700);
-    } else {
-        $("#searchBox").fadeOut(650);
+    var st = $(this).scrollTop();
+    if (st > 400) {
+        $("#searchBox").css({ 'opacity' : 1 - st/700 });
+    }
+    else{
+        $("#searchBox").css({ 'opacity' : 1 });
     }
 });
