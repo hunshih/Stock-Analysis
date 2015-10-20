@@ -86,13 +86,19 @@ $('#ticker').keyup(function(e){
     }
 });
 
+//look into non-blocking ajax request
+//fire all requests, but make all calculation after return
 $("#searchButton").click(function(){
     $(this).attr('disabled', true);
     ticker = document.getElementById('ticker').value;
     var httpLink = getInustryLink(ticker);
+    //This merely gets the industry category
     $.ajax({url: getInustryLink(ticker), async:false, success: function(result){
         industryLink = result.results[0].industry;
     }});
+    //error handle here
+    
+    //Use industry from prev call to get average
     $.ajax({url: getIndustryAverage(industryLink), async:false, success: function(response){
         industryPE = response.results[0].pe;
         industryEY = (1/industryPE).toPrecision(3);
@@ -100,6 +106,9 @@ $("#searchButton").click(function(){
         industryRoe = response.results[0].roe;
         industryPriceBook = response.results[0].pbook;
     }});
+    //error handle here.
+    //besides failed ajax, check for bad value
+    
     $.ajax({url: getMarketCap(ticker), async: false, success: function(response){
         sharePrice = response.query.results.quote.LastTradePriceOnly;
         marketCap = response.query.results.quote.MarketCapitalization;
@@ -121,7 +130,7 @@ $("#searchButton").click(function(){
             longTermDebt = jsonToAry(response.results[23], false);
             shortTermDebt = jsonToAry(response.results[20], false);
             for( var indexting = 0; indexting < 3; indexting++){
-                alert("Long:" + longTermDebt[indexting] + "| short: " + shortTermDebt[indexting]);
+                //alert("Long:" + longTermDebt[indexting] + "| short: " + shortTermDebt[indexting]);
             };
     }});
     $.ajax({url: getRoic(ticker), async: false, success: function(response){
@@ -232,6 +241,7 @@ var context = document.getElementById('radarChart').getContext('2d');
 var skillsChart = new Chart(context).Radar(radarData);
 
 /////////////////Easing/////////////////
+//except for credit, need additional popup page
 $('a').click(function(){
     var target = $(this).attr('href');
     $('html, body').animate({
