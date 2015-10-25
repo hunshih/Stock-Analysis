@@ -5,43 +5,25 @@ var flag = 0;
 google.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        lineData = google.visualization.arrayToDataTable([
-          ['Year', 'Cash/Share'],
-          ['2012',  2],
-          ['2013',  3],
-          ['2014',  5.5]
-        ]);
+        var LineData = google.visualization.arrayToDataTable([
+        ['AuditPeriod', 'Audit Count', 'Fail Percentage'],
+        ['02-11-2012',  0,      0],
+        ['02-18-2012',  0,      0],
+        ['02-25-2012',  0,      0],
+        ['07-21-2012',  1476,   .233062],
+        ['07-28-2012',  1651,   .253180],
+        ['08-04-2012',  2217,   .210645]
+    ]);
 
-        lineOptions = {
-          title: 'Cashflow Per Share',
-          curveType: 'function',
-          legend: { position: 'bottom' },
-          animation:{
-            duration: 1000,
-            easing: 'out',
-          },
-          vAxis: {minValue:0, maxValue:10},
-            backgroundColor: { fill:'transparent' }
+    var LineOptions = {
+        vAxes: {0: {format: '#,###'}, 1: {format: '#%'}},
+        hAxis: { title: "Week", format: 'm/d/y'},
+        series: {
+            0:{ type: "bars", targetAxisIndex: 0 },
+            1: { type: "line", targetAxisIndex: 1}
+            }
         };
 
-        CashLineChart = new google.visualization.LineChart(document.getElementById('lineChart'));
-        
-        CashLineChart.draw(lineData, lineOptions);
-};
-
-function updateLineChart(){
-    if(flag == 0){
-        lineData.setValue(0,1,3);
-        lineData.setValue(1,1,4.5);
-        lineData.setValue(2,1,5.1);
-        flag = 1;
-    }
-    else
-    {
-        lineData.setValue(0,1,4);
-        lineData.setValue(1,1,3);
-        lineData.setValue(2,1,2);
-        flag = 0;
-    }
-        CashLineChart.draw(lineData, lineOptions);
-}
+        CashLineChart = new google.visualization.ComboChart(document.getElementById('lineChart'));
+        CashLineChart.draw(LineData, LineOptions);
+      };

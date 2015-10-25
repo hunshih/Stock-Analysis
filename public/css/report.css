@@ -1,0 +1,49 @@
+.reportStyle{
+    font-family: "milton";
+    display:-webkit-flex;
+    -webkit-justify-content:center;
+    display:flex;
+    justify-content:center;
+    height: 450px;
+    width: 1024px;
+    margin: auto;
+}
+
+.reportStyle div{
+    
+    border-radius: 25px;
+    -moz-transition: all 0.5s ease-in-out;  /* FF4+ */
+    -o-transition: all 0.5s ease-in-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.5s ease-in-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.5s ease-in-out;  /* IE10? */
+    transition: all 0.5s ease-in-out;  
+    opacity: 0.4;
+    background-color: blue;
+}
+
+
+@font-face {
+    font-family: milton;
+    src: url("../fonts/milton/Milton Keynes Regular.ttf");
+}
+
+
+.reportStyle div:hover{
+    opacity: 1;
+}  
+
+
+#efficiency {
+    width: 256px;
+    background-color:gold;
+}
+
+#profitability {
+    width: 256px;
+    background-color: blue;
+}
+
+#liquidity {
+    width: 256px;
+    background-color: purple;
+}

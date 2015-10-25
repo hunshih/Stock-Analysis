@@ -176,8 +176,7 @@ $("#searchButton").click(function(){
     //alert(skillsChart.datasets[0].data);
     //alert(ChartData.slice());
     skillsChart.update();
-    updateLineChart();
-    updateComboChart();
+    updateFreeCashChart();
     $(this).attr('disabled', false);
 });
 
