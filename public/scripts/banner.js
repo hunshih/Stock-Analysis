@@ -16,11 +16,13 @@ var roicScore;
 var longTermDebt = [];
 var shortTermDebt = [];
 var totalEquity;
+var totalAnnualEquity = [];
 var totalCapital;
 var totalAssets;
 var currentAssets;
 var currentInventories;
 var currentLiabilities;
+var totalLiabilities = [];
 var quickRatio;
 var peRatio;
 var earningYield;
@@ -38,6 +40,7 @@ var sharePrice;
 var annualCashOps;
 var annualCapEx;
 var annualFreeCash = [];
+var debtequityRatio = [];
 //////////////////Banner////////////////
 var Banner = React.createClass({
     render: function(){
@@ -129,8 +132,11 @@ $("#searchButton").click(function(){
     $.ajax({url:getAnlData(ticker), async: false, success: function(response){
             longTermDebt = jsonToAry(response.results[23], false);
             shortTermDebt = jsonToAry(response.results[20], false);
+            totalLiabilities = jsonToAry(response.results[28], false);
+            totalAnnualEquity = jsonToAry(response.results[38], false);
             for( var indexting = 0; indexting < 3; indexting++){
-                //alert("Long:" + longTermDebt[indexting] + "| short: " + shortTermDebt[indexting]);
+                debtequityRatio[indexting] = (totalLiabilities[indexting] / totalAnnualEquity[indexting]).toFixed(2);
+                //alert("Long:" + totalAnnualEquity[indexting]);
             };
     }});
     $.ajax({url: getRoic(ticker), async: false, success: function(response){
@@ -177,6 +183,7 @@ $("#searchButton").click(function(){
     //alert(ChartData.slice());
     skillsChart.update();
     updateFreeCashChart();
+    updateDEChart();
     $(this).attr('disabled', false);
 });
 

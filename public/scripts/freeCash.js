@@ -18,7 +18,11 @@ function drawVisualization() {
     vAxis: {title: "Thousand"},
     hAxis: {title: "Year"},
     seriesType: "bars",
-    series: {2: {type: "line"}},
+    series: {
+        0: {color:'#000000'},
+        1: {color:'#FF2400'},
+        2: {type: "line"}
+    },
     animation:{
         duration: 1000,
         easing: 'out',
