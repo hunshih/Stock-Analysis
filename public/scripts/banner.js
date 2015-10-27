@@ -18,7 +18,9 @@ var shortTermDebt = [];
 var totalEquity;
 var totalAnnualEquity = [];
 var totalCapital;
-var totalAssets;
+var totalQtrAssets;
+var totalAnnualAssets = [];
+var revenue = [];
 var currentAssets;
 var currentInventories;
 var currentLiabilities;
@@ -41,6 +43,7 @@ var annualCashOps;
 var annualCapEx;
 var annualFreeCash = [];
 var debtequityRatio = [];
+var assetsTurnoverRatios = [];
 //////////////////Banner////////////////
 var Banner = React.createClass({
     render: function(){
@@ -120,23 +123,30 @@ $("#searchButton").click(function(){
     $.ajax({url:getQtrData(ticker), async: false, success: function(response){
             longTermInvestment = parseString(response.results[9].value_3);
             totalEquity = parseString(response.results[38].value_3);
-            totalAssets = parseString(response.results[16].value_3);
+            totalQtrAssets = parseString(response.results[16].value_3);
             currentAssets = parseString(response.results[8].value_3);
             currentInventories = parseString(response.results[6].value_3);
             currentLiabilities = parseString(response.results[22].value_3);
             cashEquivalents = parseString(response.results[3].value_3);
             excessCash = cashEquivalents + longTermInvestment - currentLiabilities;
-            totalCapital = totalAssets - excessCash;
+            totalCapital = totalQtrAssets - excessCash;
             quickRatio = ((currentAssets - currentInventories)/currentLiabilities).toPrecision(3);
     }});  
+    $.ajax({url: getIncomeStatement(ticker), async: false, success: function(response){
+            for( var i = 0; i < 3; i++){
+                revenue[i] = parseString(response.results[0].revenue[i+1]);
+            }
+        }
+    });
     $.ajax({url:getAnlData(ticker), async: false, success: function(response){
             longTermDebt = jsonToAry(response.results[23], false);
             shortTermDebt = jsonToAry(response.results[20], false);
             totalLiabilities = jsonToAry(response.results[28], false);
             totalAnnualEquity = jsonToAry(response.results[38], false);
+            totalAnnualAssets = jsonToAry(response.results[16], false);
             for( var indexting = 0; indexting < 3; indexting++){
                 debtequityRatio[indexting] = (totalLiabilities[indexting] / totalAnnualEquity[indexting]).toFixed(2);
-                //alert("Long:" + totalAnnualEquity[indexting]);
+                assetsTurnoverRatios[indexting] = (revenue[indexting] / totalAnnualAssets[indexting]).toFixed(2);
             };
     }});
     $.ajax({url: getRoic(ticker), async: false, success: function(response){
@@ -184,6 +194,7 @@ $("#searchButton").click(function(){
     skillsChart.update();
     updateFreeCashChart();
     updateDEChart();
+    updateATChart();
     $(this).attr('disabled', false);
 });
 
@@ -213,6 +224,10 @@ var getRatios = function(symbol){
 
 var getMarketCap = function(symbol){
     return "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + symbol + "%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
+}
+
+var getIncomeStatement = function(symbol){
+    return "https://api.import.io/store/data/a84f0510-14fb-47e2-8014-24602a26f65b/_query?input/webpage/url=http%3A%2F%2Ffinance.yahoo.com%2Fq%2Fis%3Fs%3D" + symbol + "%2BIncome%2BStatement%26annual&_user=bebd3907-23ed-45f5-86f5-69e5b8a4c9e7&_apikey=bebd390723ed45f586f569e5b8a4c9e7f032d5352f18b0b7039869cca7735ef572b8a16937d182aca19446f0a5915325f33c50aa60f94a0461d2139ae6d7e775db500837c79953a4d06485f0ae4a9e9c";
 }
 
 //////////////////Radar Graph////////////////
