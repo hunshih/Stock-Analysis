@@ -9,17 +9,30 @@
     <link rel="stylesheet" href="css/cashPage.css" />  
     <link rel="stylesheet" href="css/description.css" />
     <link rel="stylesheet" href="css/report.css" />
+    <link rel="stylesheet" href="css/credit.css" />     
+    <link rel="stylesheet" type="text/css"
+  </head>
+    
+  <body class="body">  
     <script src="https://fb.me/react-0.13.1.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.1.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
-    <script type="text/javascript" src="bower_components/progressbar.js/dist/progressbar.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
     <script src="scripts/easing.js"></script>
     <script src="bower_components/chartjs/Chart.js"></script>
     <script type="text/jsx" src="scripts/banner.js"></script>
-  </head>
-  <body class="body">  
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/jsx" src="scripts/statsbox.js"></script>
+    <script type="text/jsx" src="scripts/description.js"></script>
+    <script type="text/jsx" src="scripts/helper.js"></script>
+    <script type="text/jsx" src="scripts/cashScore.js"></script>
+    <script type="text/javascript" src="scripts/line.js"></script>
+    <script type="text/javascript" src="scripts/freeCash.js"></script>
+    <script type="text/javascript" src="scripts/area.js"></script>
+    <script type="text/javascript" src="scripts/report.js"></script> 
+      
+      
     <div id="header" class="bannerStyle"></div>
     <div id="allViews">
         <div id="ratioView">
@@ -32,28 +45,19 @@
         </div>
         <div id="cashView" class="cashPage">
             <div class="cashGraphs">
-                <div id='AssetTurnoverChart'></div>
-                <div id="lineChart"></div>
-                <div id="FreeCashFlow"></div>
+                <div id='AssetTurnoverChart' onclick="enlarge(this.id)"></div>
+                <div id="lineChart" onclick="enlarge(this.id)"></div>
+                <div id="FreeCashFlow" onclick="enlarge(this.id)"></div>
             </div>
             <div id="cashDescription" class="cashDesc"></div>
         </div>
-        <div id="reportView" class="reportStyle">
+        <div id="reportView" class="reportClass">
             <div id="efficiency"></div>
             <div id="profitability"></div>
             <div id="liquidity"></div>
         </div>
-        <div id="creditView">
+        <div class="creditClass">
         </div>
-    </div>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/jsx" src="scripts/statsbox.js"></script>
-    <script type="text/jsx" src="scripts/description.js"></script>
-    <script type="text/jsx" src="scripts/helper.js"></script>
-    <script type="text/jsx" src="scripts/cashScore.js"></script>
-    <script type="text/javascript" src="scripts/line.js"></script>
-    <script type="text/javascript" src="scripts/freeCash.js"></script>
-    <script type="text/javascript" src="scripts/area.js"></script>
-    <script type="text/javascript" src="scripts/report.js"></script>
+    </div>      
   </body>
 </html>

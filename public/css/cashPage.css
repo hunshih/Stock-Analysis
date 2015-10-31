@@ -2,24 +2,29 @@
     padding-top: 40px;
     position: relative;
     height:750px;
+    width: 1280px;
+    margin: auto;
 }
 
 .cashGraphs{
-    width:50%;
-    float:left;
+    width:100%;
+    float:top;
 }
 
 .cashGraphs div{
     transition: all .5s ease-in-out;
-    padding: 5px;
+    float: left;
+    
 }
+/*
 .cashGraphs div:hover{
     transform: scale(1.03);
 }
+*/
 
 .cashDesc{
-    height: 100%;
-    width:50%;
+    height: 50%;
+    width:100%;
     float:right;
 }
 

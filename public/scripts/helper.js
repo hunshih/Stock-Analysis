@@ -197,3 +197,14 @@ $(window).scroll(function() {
         $("#searchBox").css({ 'opacity' : 1 });
     }
 });
+
+//fade on ready
+$(document).ready(function(){
+    var st = $(window).scrollTop();
+    if (st > 400) {
+        $("#searchBox").css({ 'opacity' : 1 - st/700 });
+    }
+    else{
+        $("#searchBox").css({ 'opacity' : 1 });
+    }
+});

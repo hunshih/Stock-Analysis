@@ -13,7 +13,7 @@ google.setOnLoadCallback(drawChart);
 
         ATOptions = {
             title: 'Assets Turnover',
-            vAxes: {0: {format: '#,###'}, 1: {format: '#.#'}},
+            vAxes: {0: {format: '#,###'}, 1: {format: '#.##'}},
             hAxis: { title: "Year"},
             series: {
                 0:{ type: "bars", color: '#4E2A84',targetAxisIndex: 0 },
@@ -23,7 +23,8 @@ google.setOnLoadCallback(drawChart);
             animation:{
                 duration: 1000,
                 easing: 'out',
-            }
+            },
+            width:400
         };
 
         ATChart = new google.visualization.ComboChart(document.getElementById('AssetTurnoverChart'));

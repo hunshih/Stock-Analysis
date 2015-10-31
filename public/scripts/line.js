@@ -13,7 +13,7 @@ google.setOnLoadCallback(drawChart);
 
         DEOptions = {
             title: 'Debt to Equity',
-            vAxes: {0: {format: '#,###'}, 1: {format: '#.#'}},
+            vAxes: {0: {format: '#,###'}, 1: {format: '#.##'}},
             hAxis: { title: "Year"},
             series: {
                 0:{ type: "bars", color: '#00274c',targetAxisIndex: 0 },
@@ -23,7 +23,8 @@ google.setOnLoadCallback(drawChart);
             animation:{
                 duration: 1000,
                 easing: 'out',
-            }
+            },
+            width:400
         };
 
         DEChart = new google.visualization.ComboChart(document.getElementById('lineChart'));

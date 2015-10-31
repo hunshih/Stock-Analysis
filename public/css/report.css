@@ -1,4 +1,4 @@
-.reportStyle{
+#reportView{
     font-family: "milton";
     display:-webkit-flex;
     -webkit-justify-content:center;
@@ -9,7 +9,8 @@
     margin: auto;
 }
 
-.reportStyle div{
+
+#reportView div{
     
     border-radius: 25px;
     -moz-transition: all 0.5s ease-in-out;  /* FF4+ */
@@ -18,7 +19,6 @@
     -ms-transition: all 0.5s ease-in-out;  /* IE10? */
     transition: all 0.5s ease-in-out;  
     opacity: 0.4;
-    background-color: blue;
 }
 
 
@@ -28,7 +28,7 @@
 }
 
 
-.reportStyle div:hover{
+#reportView div:hover{
     opacity: 1;
 }  
 
