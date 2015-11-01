@@ -42,3 +42,9 @@ function updateDEChart(){
     debt_equity_data.setValue(2,3,debtequityRatio[0]);
     DEChart.draw(debt_equity_data, DEOptions);
 }
+
+function resizeDE(wid, hi){
+    DEOptions.width = wid;
+    DEOptions.height = hi;
+    DEChart.draw(debt_equity_data, DEOptions);
+}

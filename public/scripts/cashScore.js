@@ -26,10 +26,26 @@ function scale_and_shrink(){
     for(var graph in all_cash_graphs){
         //any non-selected graph, shrink
         if(all_cash_graphs[graph].localeCompare(selected_graph)) {
-            $( all_cash_graphs[graph] ).width( 100 );
+            resizeGraph(all_cash_graphs[graph], 70, 35);
+            $( all_cash_graphs[graph] ).width( 70 );
+            
         }
         else{
-            $( all_cash_graphs[graph] ).width( 400 );
+            resizeGraph(all_cash_graphs[graph], 800, 300);
+            $( all_cash_graphs[graph] ).width( 800 );
         }
+    }
+};
+
+//Function that draws the graph
+function resizeGraph(target, wid, hight){
+    if(target.localeCompare("#AssetTurnoverChart") == 0){
+        resizeAT(wid, hight); 
+    }
+    else if(target.localeCompare("#lineChart") == 0){
+        resizeDE(wid, hight);
+    }
+    else{
+        resizeFC(wid, hight);
     }
 }

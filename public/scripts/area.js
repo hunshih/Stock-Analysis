@@ -41,4 +41,10 @@ function updateATChart(){
     asset_turnover_data.setValue(2,2,revenue[0]/1000);
     asset_turnover_data.setValue(2,3,assetsTurnoverRatios[0]);
     ATChart.draw(asset_turnover_data, ATOptions);
+};
+
+function resizeAT(wid, hi){
+    ATOptions.width = wid;
+    ATOptions.height = hi;
+    ATChart.draw(asset_turnover_data, ATOptions);
 }

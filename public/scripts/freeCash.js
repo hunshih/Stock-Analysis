@@ -47,3 +47,9 @@ function updateFreeCashChart(){
     free_cash_data.setValue(2,3,annualFreeCash[0]/1000);
     FreeCashChart.draw(free_cash_data, fc_options);
 }
+
+function resizeFC(wid, hi){
+    fc_options.width = wid;
+    fc_options.height = hi;
+    FreeCashChart.draw(free_cash_data, fc_options);
+}
