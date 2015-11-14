@@ -18,6 +18,8 @@
     <script src="scripts/easing.js"></script>
     <script src="bower_components/chartjs/Chart.js"></script>
     <script type="text/jsx" src="scripts/banner.js"></script>
+    <script src="scripts/jquery-flipster-master/src/jquery.flipster.js"></script>
+    <link rel="stylesheet" href="scripts/jquery-flipster-master/dist/jquery.flipster.min.css">
   </head>
   <body class="body">      
     <div id="header" class="bannerStyle"></div>
@@ -30,18 +32,28 @@
               <canvas id="radarChart" data="ChartData" labels="corners"></canvas>
             </div>
         </div>
-        <div id="cashView" class="cashPage">
+        <ul id="cashView" class="cashPage">
             <div class="cashGraphs">
-                <div id='AssetTurnoverChart' onclick="enlarge(this.id)"></div>
-                <div id="lineChart" onclick="enlarge(this.id)"></div>
-                <div id="FreeCashFlow" onclick="enlarge(this.id)"></div>
+                <li><div id='AssetTurnoverChart' onclick="enlarge(this.id)"></div></li>
+                <li><div id="lineChart" onclick="enlarge(this.id)"></div></li>
+                <li><div id="FreeCashFlow" onclick="enlarge(this.id)"></div></li>
             </div>
-            <div id="cashDescription" class="cashDesc"></div>
+        </ul>
+        
+        <div id="carousel" class="flipper">
+            <ul>
+            <li><img class="cloud9-item" src="image/firefox.png" alt="Item #1"></li>
+            <li><img class="cloud9-item" src="image/chrome.png" alt="Item #2"></li>
+            <li><img class="cloud9-item" src="image/iexplore.png" alt="Item #3"></li>
+                </ul>
         </div>
-        <div id="reportView" class="reportClass">
-            <div id="efficiency"></div>
-            <div id="profitability"></div>
-            <div id="liquidity"></div>
+        <div id="buttons">
+          <button class="left">
+            ←
+          </button>
+          <button class="right">
+            →
+          </button>
         </div>
         <div class="creditClass">
         </div>
