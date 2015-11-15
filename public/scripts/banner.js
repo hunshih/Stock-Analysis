@@ -1,4 +1,5 @@
 //////////////////Global Variable////////////////
+var companyName;
 var industryLink;
 var ticker;
 var industryPE;
@@ -38,6 +39,7 @@ var marketCapScore;
 var payoutScore;
 var quickScore;
 var marketCap;
+var marketCapString;
 var sharePrice;
 var annualCashOps;
 var annualCapEx;
@@ -99,12 +101,14 @@ $("#searchButton").click(function(){
     ticker = document.getElementById('ticker').value;
     var httpLink = getInustryLink(ticker);
     //This merely gets the industry category
+    alert("getting industry link");
     $.ajax({url: getInustryLink(ticker), async:false, success: function(result){
         industryLink = result.results[0].industry;
     }});
     //error handle here
     
     //Use industry from prev call to get average
+    alert("getting industry average");
     $.ajax({url: getIndustryAverage(industryLink), async:false, success: function(response){
         industryPE = response.results[0].pe;
         industryEY = (1/industryPE).toPrecision(3);
@@ -114,12 +118,16 @@ $("#searchButton").click(function(){
     }});
     //error handle here.
     //besides failed ajax, check for bad value
-    
+    alert("getting M Cap");
     $.ajax({url: getMarketCap(ticker), async: false, success: function(response){
+        companyName = response.query.results.quote.Name;
+        //alert(companyName);
         sharePrice = response.query.results.quote.LastTradePriceOnly;
-        marketCap = response.query.results.quote.MarketCapitalization;
-        marketCap = convertMarketCap(marketCap);     
+        marketCapString = response.query.results.quote.MarketCapitalization;
+        marketCap = convertMarketCap(marketCapString);
+        
     }});
+    alert("getting Qtr Data");
     $.ajax({url:getQtrData(ticker), async: false, success: function(response){
             longTermInvestment = parseString(response.results[9].value_3);
             totalEquity = parseString(response.results[38].value_3);
@@ -131,13 +139,15 @@ $("#searchButton").click(function(){
             excessCash = cashEquivalents + longTermInvestment - currentLiabilities;
             totalCapital = totalQtrAssets - excessCash;
             quickRatio = ((currentAssets - currentInventories)/currentLiabilities).toPrecision(3);
-    }});  
+    }});
+    alert("getting Income Statement");
     $.ajax({url: getIncomeStatement(ticker), async: false, success: function(response){
             for( var i = 0; i < 3; i++){
                 revenue[i] = parseString(response.results[0].revenue[i+1]);
             }
         }
     });
+    alert("getting Anual Data");
     $.ajax({url:getAnlData(ticker), async: false, success: function(response){
             longTermDebt = jsonToAry(response.results[23], false);
             shortTermDebt = jsonToAry(response.results[20], false);
@@ -149,6 +159,7 @@ $("#searchButton").click(function(){
                 assetsTurnoverRatios[indexting] = (revenue[indexting] / totalAnnualAssets[indexting]).toFixed(2);
             };
     }});
+    alert("getting Roic");
     $.ajax({url: getRoic(ticker), async: false, success: function(response){
                 netIncome = parseString(response.results[1].sep272014_value);
                 dividendPaid = convertDividend(response.results[16].sep272014_value);
@@ -161,6 +172,7 @@ $("#searchButton").click(function(){
                     //alert(annualCapEx[index]);
                 }
     }});
+    alert("getting Ratios");
     $.ajax({url:getRatios(ticker), async: false, success: function(response){
           peRatio = response.results[0].pe;
           earningYield = (1/peRatio).toPrecision(3);
@@ -191,6 +203,7 @@ $("#searchButton").click(function(){
     //skillsChart.datasets[0].data = ChartData.slice();
     //alert(skillsChart.datasets[0].data);
     //alert(ChartData.slice());
+    renderDescription();
     skillsChart.update();
     updateFreeCashChart();
     updateDEChart();

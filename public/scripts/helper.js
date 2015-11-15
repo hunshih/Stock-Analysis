@@ -187,17 +187,27 @@ var jsonToAry = function(jsonObj){
     return [parseString(jsonObj.sep272014_value), parseString(jsonObj.sep282013_value), parseString(jsonObj.sep292012_value)];    
 }
 
-//Search box fade animation
+//Stats box and description fade animation
 $(window).scroll(function() {
     var st = $(this).scrollTop();
     if (st > 400) {
         $("#searchBox").css({ 'opacity' : 1 - st/600 });
+        $("#description").css({ 'opacity' : 1 - st/600 });
         if(st > 600){
             $("#searchBox").css({'display': 'none'});
+            $("#description").css({'display': 'none'});
         }
     }
     else{
         $("#searchBox").css({'display': 'inline'});
         $("#searchBox").css({ 'opacity' : 1 });
+        $("#description").css({'display': 'inline'});
+        $("#description").css({ 'opacity' : 1 });
     }
 });
+
+function renderDescription() {
+    React.render(
+    <PESection />, document.getElementById('description')                        
+);
+}

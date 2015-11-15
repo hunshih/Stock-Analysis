@@ -1,9 +1,9 @@
 .descriptionStyle{
     position: fixed;
-    top: 60px;
-    right: 50px;
-    width: 400px;
-    height: 600px;
+    top: 50px;
+    right: 20px;
+    width: 350px;
+    height: 400px;
     color:darkgreen;
     z-index: 1;
     font-family: "milton";
@@ -18,6 +18,5 @@
 }
 
 .descriptionStyle h2{
-    font-size: 500%;
-    text-align: center;
+    text-align: left;
 }
