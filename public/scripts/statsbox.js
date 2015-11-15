@@ -22,6 +22,9 @@ React.render(
 var buttonIDs = ["#peLetter","#pbLetter", "#eyLetter", "#payoutLetter", "#quickLetter", "#roicLetter", "#capLetter"];
 
 function showSection(sectionID, inputArray){
+    React.render(
+    <PESection />, document.getElementById('description')                        
+    );
     if ($(sectionID).is(":hidden")) {
         $( sectionID ).fadeToggle("slow", "linear");
     }
