@@ -5,6 +5,7 @@
   overflow-x: hidden;
   overflow-y: visible;
   position: relative;
+  height: 400px;
 }
 .flipster:focus {
   outline: none;
@@ -157,7 +158,7 @@
   transition-timing-function: cubic-bezier(0.56, 0.12, 0.12, 0.98);
 }
 .flipster--carousel .flipster__item {
-  perspective: 800px;
+  perspective: 300px;
 }
 .flipster--carousel .flipster__item--past,
 .flipster--carousel .flipster__item--future {
@@ -224,15 +225,15 @@
   transition-timing-function: cubic-bezier(0.56, 0.12, 0.12, 0.98);
 }
 .flipster--coverflow .flipster__item {
-  perspective: 800px;
+  perspective: 300px;
 }
 .flipster--coverflow .flipster__container {
-  padding-bottom: 5%;
+
 }
 .flipster--coverflow .flipster__item__content {
   transform-origin: 50% 100%;
-  box-reflect: below 0 -webkit-gradient(linear, left bottom, left top, color-stop(0.05, rgba(255, 255, 255, 0.12)), color-stop(0.2, transparent));
-  -webkit-box-reflect: below 0 -webkit-gradient(linear, left bottom, left top, color-stop(0.05, rgba(255, 255, 255, 0.12)), color-stop(0.2, transparent));
+  box-reflect: below 0 -webkit-gradient(linear, left bottom, left top, color-stop(0.05, rgba(255, 255, 255, 0.16)), color-stop(0.35, transparent));
+  -webkit-box-reflect: below 0 -webkit-gradient(linear, left bottom, left top, color-stop(0.05, rgba(255, 255, 255, 0.16)), color-stop(0.35, transparent));
 }
 .flipster--coverflow .flipster__item__content img:only-child {
   display: block;

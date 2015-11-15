@@ -191,9 +191,13 @@ var jsonToAry = function(jsonObj){
 $(window).scroll(function() {
     var st = $(this).scrollTop();
     if (st > 400) {
-        $("#searchBox").css({ 'opacity' : 1 - st/700 });
+        $("#searchBox").css({ 'opacity' : 1 - st/600 });
+        if(st > 600){
+            $("#searchBox").css({'display': 'none'});
+        }
     }
     else{
+        $("#searchBox").css({'display': 'inline'});
         $("#searchBox").css({ 'opacity' : 1 });
     }
 });

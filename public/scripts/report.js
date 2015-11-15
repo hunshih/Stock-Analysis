@@ -32,7 +32,7 @@ $('.reportFlipster').flipster({
     // Adds a class (e.g. flipster--coverflow) to the flipster element to switch between display styles
     // Create your own theme in CSS and use this setting to have Flipster add the custom class
 
-    spacing: -0.4,
+    spacing: -0.3,
     // [number]
     // Space between items relative to each item's width. 0 for no spacing, negative values to overlap
 
@@ -57,7 +57,7 @@ $('.reportFlipster').flipster({
     // If not false, Flipster will build an unordered list of the items
     // Values true or 'before' will insert the navigation before the items, 'after' will append the navigation after the items
 
-    buttons: false,
+    buttons: true,
     // [true|false|'custom']
     // If true, Flipster will insert Previous / Next buttons with SVG arrows
     // If 'custom', Flipster will not insert the arrows and will instead use the values of `buttonPrev` and `buttonNext`

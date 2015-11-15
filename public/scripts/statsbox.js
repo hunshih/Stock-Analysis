@@ -33,7 +33,7 @@ function showSection(sectionID, inputArray){
 };
 
 $("#peButton").click(function(){
-    alert(sharePrice);
+    alert(peRatio);
     showSection("#peLetter", buttonIDs);
 });
 
