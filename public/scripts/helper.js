@@ -170,15 +170,19 @@ var capScaling = function(value){
     var result = 0;
     if(value < 1217*1.0e+6){
         result = 5;
+        marketCapDesc = "Small"
     }
     else if(value < 3789*1.0e+6){
         result = 6;
+        marketCapDesc = "Medium"
     }
     else if(value < 16621*1.0e+6){
         result = 7;
+        marketCapDesc = "Medium"
     }
     else{
         result = 8;
+        marketCapDesc = "Large"
     }
     return result;
 }

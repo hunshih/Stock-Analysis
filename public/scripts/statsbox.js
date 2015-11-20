@@ -2,13 +2,13 @@ var SearchBox = React.createClass({
     render: function(){
         return(
             <ul>
-                <li><button id="peButton">PE Score: {peScore}</button></li>
-                <li><button id="pbButton">PB Score: {pbScore}</button></li>
-                <li><button id="eyButton">EY Score: {eyScore}</button></li>
-                <li><button id="payoutButton">Payout Score: {payoutScore}</button></li>
-                <li><button id="quickButton">Quick Score: {quickScore}</button></li>
-                <li><button id="roicButton">ROIC Score: {roicScore}</button></li>
-                <li><button id="capButton">Size Score: {marketCapScore}</button></li>
+                <li><button id="peButton">P/E Ratio: {peRatio}</button></li>
+                <li><button id="pbButton">P/B Ratio: {priceBook}</button></li>
+                <li><button id="eyButton">Earnings Yield: {earningYield}%</button></li>
+                <li><button id="payoutButton">Payout Ratio: {payoutRatio}</button></li>
+                <li><button id="quickButton">Quick Ratio: {quickRatio}</button></li>
+                <li><button id="roicButton">ROIC: {roic}</button></li>
+                <li><button id="capButton">Market Cap: {marketCapDesc}</button></li>
             </ul>
         );
     }

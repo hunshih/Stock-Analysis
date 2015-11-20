@@ -36,6 +36,7 @@ var peScore;
 var pbScore;
 var eyScore;
 var marketCapScore;
+var marketCapDesc;
 var payoutScore;
 var quickScore;
 var marketCap;

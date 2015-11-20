@@ -4,7 +4,6 @@
     right: 20px;
     width: 350px;
     height: 400px;
-    color:darkgreen;
     z-index: 1;
     font-family: "milton";
     font-weight: bold;
@@ -18,5 +17,13 @@
 }
 
 .descriptionStyle h2{
+    color:darkgreen;
     text-align: left;
+}
+
+.descriptionStyle p{
+    color:darkgreen;
+}
+#content span{
+    color:red;
 }

@@ -4,8 +4,7 @@ var PESection = React.createClass({
             <div>
                 <div id="PriceEarnings">
                     <h2>Price-Earnings</h2>
-                    <p>{companyName}: {peRatio}</p>
-                    <p>Industry Average: {industryPE}</p>
+                    <p id="content">In essence, the price-earnings ratio indicates the dollar amount an investor can expect to invest in a company in order to receive one dollar of that company’s earnings. <span>{companyName}</span> has the pe ratio of  <span>{peRatio}</span>, whereas the industry average is <span>{industryPE}</span></p>
                 </div>
                 <div id="PriceToBook">
                     <h2 >Price-To-Book</h2>
