@@ -1,3 +1,12 @@
-.flipper img{
-    border:1px solid #021a40;
+.reportFlipster{
+    padding-top: 40px;
+    width: 1024px;
+    margin: auto;
+}
+
+.reportDesc {
+    height: 300px;
+    width: 800px;
+    margin: auto;
+    background-color: black;
 }

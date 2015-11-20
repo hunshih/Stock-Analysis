@@ -19,9 +19,10 @@ React.render(
 <SearchBox />, document.getElementById('searchBox')
 );
 
-var buttonIDs = ["#peLetter","#pbLetter", "#eyLetter", "#payoutLetter", "#quickLetter", "#roicLetter", "#capLetter"];
+var buttonIDs = ["#PriceEarnings","#PriceToBook", "#EarningsYield", "#PayoutRatios", "#QuickRatios", "#ReturnOnIC", "#MarketCapital"];
 
 function showSection(sectionID, inputArray){
+    renderDescription();
     if ($(sectionID).is(":hidden")) {
         $( sectionID ).fadeToggle("slow", "linear");
     }
@@ -32,32 +33,33 @@ function showSection(sectionID, inputArray){
     }
 };
 
+
+
 $("#peButton").click(function(){
-    alert(sharePrice);
-    showSection("#peLetter", buttonIDs);
+    showSection("#PriceEarnings", buttonIDs);
 });
 
 $("#pbButton").click(function(){
-    showSection("#pbLetter", buttonIDs);
+    showSection("#PriceToBook", buttonIDs);
 });
 
 $("#eyButton").click(function(){
-    showSection("#eyLetter", buttonIDs);
+    showSection("#EarningsYield", buttonIDs);
 });
 
 $("#payoutButton").click(function(){
-    showSection("#payoutLetter", buttonIDs);
+    showSection("#PayoutRatios", buttonIDs);
 });
 
 $("#quickButton").click(function(){
-    showSection("#quickLetter", buttonIDs);
+    showSection("#QuickRatios", buttonIDs);
 });
 
 $("#roicButton").click(function(){
-    showSection("#roicLetter", buttonIDs);
+    showSection("#ReturnOnIC", buttonIDs);
 });
 
 $("#capButton").click(function(){
-    showSection("#capLetter", buttonIDs);
+    showSection("#MarketCapital", buttonIDs);
 });
 

@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="css/cashPage.css" />  
     <link rel="stylesheet" href="css/description.css" />
     <link rel="stylesheet" href="css/report.css" />
-    <link rel="stylesheet" href="css/credit.css" />     
-    <link rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/credit.css" />
+      <link rel="stylesheet" href="css/jquery.flipster.css">
     <script src="https://fb.me/react-0.13.1.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.1.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="bower_components/progressbar.js/dist/progressbar.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
     <script src="scripts/easing.js"></script>
     <script src="bower_components/chartjs/Chart.js"></script>
     <script type="text/jsx" src="scripts/banner.js"></script>
-    <script src="scripts/jquery-flipster-master/src/jquery.flipster.js"></script>
-    <link rel="stylesheet" href="scripts/jquery-flipster-master/dist/jquery.flipster.min.css">
   </head>
-  <body class="body">      
+  <body class="body">  
     <div id="header" class="bannerStyle"></div>
     <div id="allViews">
         <div id="ratioView">
@@ -32,30 +32,22 @@
               <canvas id="radarChart" data="ChartData" labels="corners"></canvas>
             </div>
         </div>
-        <ul id="cashView" class="cashPage">
+        <div id="cashView" class="cashPage">
             <div class="cashGraphs">
-                <li><div id='AssetTurnoverChart' onclick="enlarge(this.id)"></div></li>
-                <li><div id="lineChart" onclick="enlarge(this.id)"></div></li>
-                <li><div id="FreeCashFlow" onclick="enlarge(this.id)"></div></li>
+                <div id='AssetTurnoverChart'></div>
+                <div id="lineChart"></div>
+                <div id="FreeCashFlow"></div>
             </div>
-        </ul>
-        
-        <div id="carousel" class="flipper">
+            <div id="cashDescription" class="cashDesc"></div>
+        </div>
+        <div id="reportView" class="reportFlipster">
             <ul>
-            <li><img class="cloud9-item" src="image/firefox.png" alt="Item #1"></li>
-            <li><img class="cloud9-item" src="image/chrome.png" alt="Item #2"></li>
-            <li><img class="cloud9-item" src="image/iexplore.png" alt="Item #3"></li>
-                </ul>
+                <li><img src="image/chrome.png"/></li>
+                <li><img src="image/firefox.png"/></li>
+                <li><img src="image/iexplore.png"/></li>
+            </ul>
         </div>
-        <div id="buttons">
-          <button class="left">
-            ←
-          </button>
-          <button class="right">
-            →
-          </button>
-        </div>
-        <div class="creditClass">
+        <div class="reportDesc">
         </div>
     </div>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -66,6 +58,7 @@
     <script type="text/javascript" src="scripts/line.js"></script>
     <script type="text/javascript" src="scripts/freeCash.js"></script>
     <script type="text/javascript" src="scripts/area.js"></script>
-    <script type="text/javascript" src="scripts/report.js"></script>
+    <script src="scripts/jquery.flipster.js"></script>
+    <script src="scripts/report.js"></script>
   </body>
 </html>
