@@ -24,7 +24,7 @@ google.setOnLoadCallback(drawChart);
                 duration: 1000,
                 easing: 'out',
             },
-            width:600
+            width:550
         };
 
         ATChart = new google.visualization.ComboChart(document.getElementById('AssetTurnoverChart'));

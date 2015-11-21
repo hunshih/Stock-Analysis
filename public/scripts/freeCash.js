@@ -28,7 +28,7 @@ function drawVisualization() {
         easing: 'out',
     },
     backgroundColor: { fill:'transparent' },
-    width:600
+    width:550
   };
 
   FreeCashChart = new google.visualization.ComboChart(document.getElementById('FreeCashFlow'));
