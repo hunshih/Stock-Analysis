@@ -33,10 +33,10 @@
             </div>
         </div>
         <div id="cashView" class="cashPage">
-            <div class="cashGraphs">
-                <div class="ShadowStyle" id='AssetTurnoverChart'></div>
-                <div class="ShadowStyle" id="lineChart"></div>
-                <div class="ShadowStyle" id="FreeCashFlow"></div>
+            <div id="cashGraphs" class="cashGraphs">
+                <div class="ShadowStyle" id='AssetTurnoverChart' onclick="graphSelect(this)"></div>
+                <div class="ShadowStyle" id="lineChart" onclick="graphSelect(this)"></div>
+                <div class="ShadowStyle" id="FreeCashFlow" onclick="graphSelect(this)"></div>
             </div>
             <div id="cashDescription" class="cashDesc"></div>
         </div>

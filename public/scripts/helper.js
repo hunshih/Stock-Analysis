@@ -212,6 +212,23 @@ $(window).scroll(function() {
 
 function renderDescription() {
     React.render(
-    <PESection />, document.getElementById('description')                        
-);
+        <PESection />, document.getElementById('description')                      
+    );
+}
+
+function graphSelect(obj) {
+    //alert(id);
+    var clicked = obj;
+    $(obj).css('transform', 'scale(1.05)');
+    $(obj).css({ 'opacity' : 1 });
+    cashHeader = obj.id;
+    $('#cashGraphs').children().each(function () {
+        if(clicked != this){
+            $(this).css('transform', 'scale(1.00)');
+            $(this).css({ 'opacity' : 0.4 });
+        }
+    });
+    React.render(
+        <CashSection />, document.getElementById('cashDescription')                
+    );                       
 }

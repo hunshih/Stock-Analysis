@@ -281,7 +281,7 @@ $('a').click(function(){
     var target = $(this).attr('href');
     $('html, body').animate({
         scrollTop: $(target).offset().top
-    }, 2000, "easeInOutQuart");
+    }, 1300, "easeOutQuart");
     //alert($(this).attr('href'));
     return false;
 });

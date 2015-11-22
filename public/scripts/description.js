@@ -49,3 +49,21 @@ $("#PayoutRatios").hide();
 $("#QuickRatios").hide();
 $("#ReturnOnIC").hide();
 $("#MarketCapital").hide();
+
+///////////////Render Cash Description///////////////////
+var cashHeader = "Header";
+var cashContent = "Content";
+var CashSection = React.createClass({
+    render: function(){
+        return(
+            <div>
+                <h2>{cashHeader}</h2>
+                <p>{cashContent}</p>
+            </div>
+        )
+    }
+});
+
+React.render(
+    <CashSection />, document.getElementById('cashDescription')                
+);
