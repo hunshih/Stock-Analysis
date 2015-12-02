@@ -51,8 +51,8 @@ $("#ReturnOnIC").hide();
 $("#MarketCapital").hide();
 
 ///////////////Render Cash Description///////////////////
-var cashHeader = "Header";
-var cashContent = "Content";
+var cashHeader;
+var cashContent;
 var CashSection = React.createClass({
     render: function(){
         return(

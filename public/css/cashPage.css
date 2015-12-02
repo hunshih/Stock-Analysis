@@ -29,8 +29,10 @@
 }
 
 .cashDesc{
+    padding-top: 50px;
+    font-family: "milton";
     height: 100%;
-    width:50%;
+    width: 500px;
     float:right;
 }
 

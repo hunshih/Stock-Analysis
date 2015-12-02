@@ -216,12 +216,16 @@ function renderDescription() {
     );
 }
 
+var cashMap = {};
+cashMap["AssetTurnoverChart"] = "Assets Turnover Ratio";
+cashMap["lineChart"] = "Debt to Equity Ratio";
+cashMap["FreeCashFlow"] = "Free Cash Flow";
 function graphSelect(obj) {
     //alert(id);
     var clicked = obj;
     $(obj).css('transform', 'scale(1.05)');
     $(obj).css({ 'opacity' : 1 });
-    cashHeader = obj.id;
+    cashHeader = cashMap[obj.id];
     $('#cashGraphs').children().each(function () {
         if(clicked != this){
             $(this).css('transform', 'scale(1.00)');
