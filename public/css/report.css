@@ -5,8 +5,11 @@
 }
 
 .reportDesc {
-    height: 300px;
+    height: 200px;
     width: 800px;
     margin: auto;
-    background-color: black;
+    padding-bottom: 20px;
+    font-family: "milton";
+    font-size: 30;
+    font-weight: bold;
 }

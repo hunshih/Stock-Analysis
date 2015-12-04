@@ -67,3 +67,37 @@ var CashSection = React.createClass({
 React.render(
     <CashSection />, document.getElementById('cashDescription')                
 );
+
+//////////////Report Description////////////
+var liquidityReport = "Liquidity describes the degree to which an asset or security can be quickly bought or sold in the market without affecting the asset's price.";
+
+var profitabilityReport = "A class of financial metrics that are used to assess a business's ability to generate earnings as compared to its expenses and other relevant costs incurred during a specific period of time."
+
+var efficiencyReport = "Efficiency signifies a level of performance that describes a process that uses the lowest amount of inputs to create the greatest amount of outputs.";
+
+var selectedReport;
+
+var reportMap = {};
+reportMap["liquidity"] = liquidityReport;
+reportMap["profitability"] = profitabilityReport;
+reportMap["efficiency"] = efficiencyReport;
+
+var ReportDesc = React.createClass({
+    render: function(){
+        return(
+            <div>
+                <p>{selectedReport}</p>
+            </div>
+        );
+    }
+});
+
+React.render(
+<ReportDesc />, document.getElementById('reportDescription')
+);
+
+function refresh(){
+    React.render(
+        <ReportDesc />, document.getElementById('reportDescription')
+    );
+}

@@ -1,3 +1,10 @@
+/////////////////Callback function on item switch/////////////////
+function testing(currentItem, previousItem){
+    selectedReport = reportMap[currentItem.id];
+    refresh();
+}
+
+/////////////////////Flipster Scripts//////////////////
 $('.reportFlipster').flipster({
     itemContainer: 'ul',
     // [string|object]
@@ -70,7 +77,7 @@ $('.reportFlipster').flipster({
     // [text|html]
     // Changes the text for the Next button
 
-    onItemSwitch: false
+    onItemSwitch: testing
     // [function]
     // Callback function when items are switched
     // Arguments received: [currentItem, previousItem]
