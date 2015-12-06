@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="css/description.css" />
     <link rel="stylesheet" href="css/report.css" />
     <link rel="stylesheet" href="css/credit.css" />
-      <link rel="stylesheet" href="css/jquery.flipster.css">
+    <link rel="stylesheet" href="css/jquery.flipster.css">
     <script src="https://fb.me/react-0.13.1.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.1.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="bower_components/progressbar.js/dist/progressbar.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+    <script src="scripts/jquery.gifplayer.js"></script>
     <script src="scripts/easing.js"></script>
     <script src="bower_components/chartjs/Chart.js"></script>
     <script type="text/jsx" src="scripts/banner.js"></script>
@@ -43,8 +45,8 @@
         <div id="reportView" class="reportFlipster">
             <ul>
                 <li id="efficiency"><img class="spinning" src="image/efficiencyIcon.png"/></li>
-                <li id="profitability"><img src="image/profitability.png"/></li>
-                <li id="liquidity"><img src="image/liquidity.png"/></li>
+                <li id="profitability"><img id="profitabilityIcon" src="image/profitabilities/p1.png"/></li>
+                <li id="liquidity"  class="slideout"><img id="liquidityIcon" src="image/liquidity.png"/></li>
             </ul>
         </div>
         <div id="reportDescription" class="reportDesc">
@@ -59,6 +61,6 @@
     <script type="text/javascript" src="scripts/freeCash.js"></script>
     <script type="text/javascript" src="scripts/area.js"></script>
     <script src="scripts/jquery.flipster.js"></script>
-    <script src="scripts/report.js"></script>
+    <script type="text/javascript" src="scripts/report.js"></script>
   </body>
 </html>
