@@ -1,19 +1,3 @@
-var convertMarketCap = function(value){
-    if(value == null) return 0;
-    var decimalValue = parseString(value.substring(0, value.length - 1));
-    if(value.slice(-1) == 'M'){
-        return (decimalValue*1.0e+6);
-    }
-    else return (decimalValue*(1.0e+9));
-};
-
-var convertDividend = function(value){
-    if(value.length <= 1) return 0;
-    else {
-        return parseString(value);
-    }
-};
-
 var parseString = function(value){
     var isPositive = true;
     var temp = value;
@@ -185,10 +169,6 @@ var capScaling = function(value){
         marketCapDesc = "Large"
     }
     return result;
-}
-
-var jsonToAry = function(jsonObj){
-    return [parseString(jsonObj.sep272014_value), parseString(jsonObj.sep282013_value), parseString(jsonObj.sep292012_value)];    
 }
 
 //Stats box and description fade animation
