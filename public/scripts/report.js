@@ -20,7 +20,6 @@ function stopEfficiencyAnimation()
     $(".spinning").css("-moz-animation-play-state", "paused");
     $(".spinning").css("animation-play-state", "paused");
 }
-$( document ).ready(stopEfficiencyAnimation());
 
 function startEfficiencyAnimation()
 {
@@ -29,17 +28,25 @@ function startEfficiencyAnimation()
     $(".spinning").css("animation-play-state", "running");
 }
 
-function profitbarReplace() {
-    $("#profitabilityIcon").attr("src", "../image/profitabilities/profitability.gif");
-};
-
+window.onload = function() {
+    Gifffer();
+}
+$( document ).ready(stopEfficiencyAnimation());
+$(document).ready(function() {
+    setTimeout(function() {
+        if(!isMoving)
+        {
+            gifFunction();
+        }
+    }, 3000);
+});
 /////////////////Callback function on item switch/////////////////
-function testing(currentItem, previousItem){
+function fliperCallback(currentItem, previousItem){
     selectedReport = reportMap[currentItem.id];
     refresh(selectedReport);
     if(currentItem.id.localeCompare("liquidity") == 0)
     {
-        liquidityAnimation();  
+        liquidityAnimation();
     }
     else
     {
@@ -48,7 +55,20 @@ function testing(currentItem, previousItem){
     }
     if(currentItem.id.localeCompare("profitability") == 0)
     {
-        profitbarReplace();   
+        if(!isMoving)
+        {
+            gifFunction();
+        }
+        
+    }
+    else
+    {
+        if(isMoving)
+        {
+            gifFunction();
+            $('#profitabilityIcon').hide();
+            $('#profitabilityIcon').show( "fade", 900 );
+        }
     }
     if(currentItem.id.localeCompare("efficiency") != 0)
     {
@@ -133,7 +153,7 @@ $('.reportFlipster').flipster({
     // [text|html]
     // Changes the text for the Next button
 
-    onItemSwitch: testing
+    onItemSwitch: fliperCallback
     // [function]
     // Callback function when items are switched
     // Arguments received: [currentItem, previousItem]
