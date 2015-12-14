@@ -84,10 +84,10 @@ $('#ticker').keyup(function(e){
 
 var worker = new Worker('../scripts/calc.js');
 
-
-//look into non-blocking ajax request
 //fire all requests, but make all calculation after return
 $("#searchButton").click(function(){
+    $("#loader").fadeIn(1000);
+    $("#overlay-back").fadeIn(500);
     ticker = document.getElementById('ticker').value;
     $(this).attr('disabled', true);
     worker.postMessage(ticker);
@@ -96,6 +96,8 @@ $("#searchButton").click(function(){
 worker.onmessage = function(e){
     $("#searchButton").attr('disabled', false);
     fillData(e);
+    $("#loader").fadeOut(500);;
+    $("#overlay-back").fadeOut(500);
     renderall();
 }
 
