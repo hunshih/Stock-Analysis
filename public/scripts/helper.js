@@ -216,3 +216,32 @@ function graphSelect(obj) {
         <CashSection />, document.getElementById('cashDescription')                
     );                       
 }
+//////////////////////Load File of Public Companies/////
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                var result = allText.split('\n');
+                for(var company in result)
+                {
+                    companyList.push(result[company]);
+                    //alert(result[company]);   
+                }
+                //alert(companyList.length);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+window.onload()
+{
+    readTextFile("../pages/companies.csv");   
+}

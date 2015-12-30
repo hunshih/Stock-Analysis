@@ -47,26 +47,8 @@ var annualCapEx;
 var annualFreeCash;
 var debtequityRatio;
 var assetsTurnoverRatios;
-//////////////////Banner////////////////
-var Banner = React.createClass({
-    render: function(){
-        return(
-            <ul>
-                <a href="#ratioView">Ratio</a>
-                <a href="#cashView">Cash Flow</a>
-                <a href="#reportView">Report Card</a>
-                <a href="#creditView">Credits</a>
-                <input type="text" placeholder="Ticker" id="ticker"></input>
-                <button id="searchButton">Search</button>
-            </ul>
-        );
-    }
-});
+var companyList = [];
 
-
-React.render(
-<Banner />, document.getElementById('header')
-);
 ///////////////////Initial Views///////////////////////////
 var viewIDs = ["#ratioView", "#cashView","#reportView", "#creditView"];
 
@@ -90,16 +72,32 @@ $("#searchButton").click(function(){
     $("#overlay-back").fadeIn(500);
     ticker = document.getElementById('ticker').value;
     $(this).attr('disabled', true);
+    document.getElementById('ticker').readOnly = true;
     worker.postMessage(ticker);
 });
 
 worker.onmessage = function(e){
     $("#searchButton").attr('disabled', false);
+    document.getElementById('ticker').readOnly = false;
     fillData(e);
     $("#loader").fadeOut(500);;
     $("#overlay-back").fadeOut(500);
     renderall();
 }
+
+/////////////////Auto Complete//////////
+var userInput = document.getElementById("ticker");
+new Awesomplete(userInput, {
+	list: companyList,
+    minChars: 1,
+    maxItems: 5,
+    autoFirst: true,
+    replace: function (text) 
+            {
+                var value = text.split(',');
+                this.input.value = value[0];
+            }
+});
 
 function renderall(){
     peScore = peScaling(peRatio, industryPE).toPrecision(3);

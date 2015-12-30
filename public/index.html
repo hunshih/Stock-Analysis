@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="css/description.css" />
     <link rel="stylesheet" href="css/report.css" />
     <link rel="stylesheet" href="css/credit.css" />
-    <link rel="stylesheet" href="css/jquery.flipster.css">
-    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/jquery.flipster.css"/>
+    <link rel="stylesheet" href="css/loader.css"/>
+    <link rel="stylesheet" href="css/awesomplete.css" />
     <script src="https://fb.me/react-0.13.1.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.1.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
@@ -19,13 +20,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
     <script src="scripts/jquery.gifplayer.js"></script>
     <script src="scripts/easing.js"></script>
+    <script src="scripts/awesomplete.js" async></script>
     <script src="bower_components/chartjs/Chart.js"></script>
     <script type="text/jsx" src="scripts/banner.js"></script>
   </head>
   <body class="body"> 
     <div class="overlay-back" id="overlay-back"></div>
     <img class="loadingStyle" id="loader" src="image/loading5.gif"></img>
-    <div id="header" class="bannerStyle"></div>
+    <div id="header" class="bannerStyle">
+        <ul>
+            <a href="#ratioView">Ratio</a>
+            <a href="#cashView">Cash Flow</a>
+            <a href="#reportView">Report Card</a>
+            <a href="#creditView">Credits</a>
+            <input class="awesomplete" type="text" placeholder="Ticker" id="ticker"></input>
+            <button id="searchButton">Search</button>
+        </ul>
+    </div>
     <div id="allViews">
         <div id="ratioView">
             <div id="searchBox" class="searchStyle"></div>
@@ -62,7 +73,6 @@
     <script type="text/javascript" src="scripts/line.js"></script>
     <script type="text/javascript" src="scripts/freeCash.js"></script>
     <script type="text/javascript" src="scripts/area.js"></script>
-    <script type="text/javascript" src="scripts/autocomplete.js"></script>
     <script src="scripts/jquery.flipster.js"></script>
     <script type="text/javascript" src="scripts/report.js"></script>
   </body>
