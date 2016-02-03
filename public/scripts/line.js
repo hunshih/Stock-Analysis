@@ -24,7 +24,8 @@ google.setOnLoadCallback(drawChart);
                 duration: 1000,
                 easing: 'out',
             },
-            width:550
+            width:550,
+            height:250
         };
 
         DEChart = new google.visualization.ComboChart(document.getElementById('lineChart'));
@@ -40,11 +41,5 @@ function updateDEChart(){
     debt_equity_data.setValue(2,1,totalLiabilities[0]/1000);
     debt_equity_data.setValue(2,2,totalAnnualEquity[0]/1000);
     debt_equity_data.setValue(2,3,debtequityRatio[0]);
-    DEChart.draw(debt_equity_data, DEOptions);
-}
-
-function resizeDE(wid, hi){
-    DEOptions.width = wid;
-    DEOptions.height = hi;
     DEChart.draw(debt_equity_data, DEOptions);
 }

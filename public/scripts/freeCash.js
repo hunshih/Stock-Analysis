@@ -28,7 +28,8 @@ function drawVisualization() {
         easing: 'out',
     },
     backgroundColor: { fill:'transparent' },
-    width:550
+    width:550,
+    height:250
   };
 
   FreeCashChart = new google.visualization.ComboChart(document.getElementById('FreeCashFlow'));
@@ -45,11 +46,5 @@ function updateFreeCashChart(){
     free_cash_data.setValue(2,1,annualCashOps[0]/1000);
     free_cash_data.setValue(2,2,-annualCapEx[0]/1000);
     free_cash_data.setValue(2,3,annualFreeCash[0]/1000);
-    FreeCashChart.draw(free_cash_data, fc_options);
-}
-
-function resizeFC(wid, hi){
-    fc_options.width = wid;
-    fc_options.height = hi;
     FreeCashChart.draw(free_cash_data, fc_options);
 }

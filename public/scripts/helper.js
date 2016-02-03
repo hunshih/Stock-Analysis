@@ -201,7 +201,6 @@ cashMap["AssetTurnoverChart"] = "Assets Turnover Ratio";
 cashMap["lineChart"] = "Debt to Equity Ratio";
 cashMap["FreeCashFlow"] = "Free Cash Flow";
 function graphSelect(obj) {
-    //alert(id);
     var clicked = obj;
     $(obj).css('transform', 'scale(1.05)');
     $(obj).css({ 'opacity' : 1 });
@@ -213,7 +212,7 @@ function graphSelect(obj) {
         }
     });
     React.render(
-        <CashSection />, document.getElementById('cashDescription')                
+        <CashSection />, document.getElementById('cashDescription')  
     );                       
 }
 //////////////////////Load File of Public Companies/////
