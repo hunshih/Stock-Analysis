@@ -205,15 +205,18 @@ function graphSelect(obj) {
     $(obj).css('transform', 'scale(1.05)');
     $(obj).css({ 'opacity' : 1 });
     cashHeader = cashMap[obj.id];
-    $('#cashGraphs').children().each(function () {
-        if(clicked != this){
+    $('#cashView').children().children().each(function () {
+        if(clicked != this && this.id != 'cashDescription'){
             $(this).css('transform', 'scale(1.00)');
             $(this).css({ 'opacity' : 0.4 });
+            //$(this).on("click");
         }
     });
     React.render(
         <CashSection />, document.getElementById('cashDescription')  
-    );                       
+    );    
+    $("#cashDescription").hide();
+    $("#cashDescription").fadeIn(700);
 }
 //////////////////////Load File of Public Companies/////
 function readTextFile(file)

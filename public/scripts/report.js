@@ -28,18 +28,7 @@ function startEfficiencyAnimation()
     $(".spinning").css("animation-play-state", "running");
 }
 
-window.onload = function() {
-    Gifffer();
-}
 $( document ).ready(stopEfficiencyAnimation());
-$(document).ready(function() {
-    setTimeout(function() {
-        if(!isMoving)
-        {
-            gifFunction();
-        }
-    }, 3000);
-});
 /////////////////Callback function on item switch/////////////////
 function fliperCallback(currentItem, previousItem){
     selectedReport = reportMap[currentItem.id];
@@ -47,37 +36,19 @@ function fliperCallback(currentItem, previousItem){
     if(currentItem.id.localeCompare("liquidity") == 0)
     {
         liquidityAnimation();
+        stopEfficiencyAnimation();  
     }
-    else
+    else if(currentItem.id.localeCompare("efficiency") == 0)
     {
+        startEfficiencyAnimation();
         //stop animation
         stopLiquidityAnimation();
     }
-    if(currentItem.id.localeCompare("profitability") == 0)
-    {
-        if(!isMoving)
-        {
-            gifFunction();
-        }
-        
-    }
     else
     {
-        if(isMoving)
-        {
-            gifFunction();
-            $('#profitabilityIcon').hide();
-            $('#profitabilityIcon').show( "fade", 900 );
-        }
+        stopEfficiencyAnimation();  
+        stopLiquidityAnimation();
     }
-    if(currentItem.id.localeCompare("efficiency") != 0)
-    {
-        stopEfficiencyAnimation();   
-    }
-    else
-    {
-        startEfficiencyAnimation();
-    }        
 }
 
 /////////////////////Flipster Scripts//////////////////

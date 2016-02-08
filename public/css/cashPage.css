@@ -1,24 +1,18 @@
 .cashPage{
-    padding-top: 40px;
+    padding-top: 50px;
     position: relative;
     height:750px;
     width: 1200px;
     margin: auto;
 }
 
-.cashGraphs{
-    width:50%;
-    float:left;
-}
-
-.cashGraphs div{
-    transition: all 0.2s ease-in-out;
-    padding: 5px;
-
-}
-
 .ShadowStyle{
     opacity: 0.4;
+    transition: all 0.2s ease-in-out;
+    padding: 5px;
+    height: 250px;
+    width: 550px;
+    padding-bottom: 10px;
 }
 
 .ShadowStyle:hover{
@@ -29,14 +23,18 @@
 }
 
 .cashDesc{
-    padding-top: 50px;
     font-family: "milton";
-    height: 100%;
-    width: 500px;
-    float:right;
+    height: 270px;
+    width: 550px;
+    padding: 5px;
 }
 
 .cashDesc p{
     font-size: 200%;
     text-align: center;
+}
+
+.cashPanel{
+    width: 600px;
+    float:left;
 }
